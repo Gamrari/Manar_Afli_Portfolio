@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manar Afli — Industrial IT &amp; Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A1220;
+    --panel:#0F1A2C;
+    --panel-2:#121F35;
+    --grid:rgba(148,197,255,0.07);
+    --grid-strong:rgba(148,197,255,0.14);
+    --text:#E8EEF7;
+    --text-dim:#8CA0BE;
+    --text-faint:#5A6E8C;
+    --border:rgba(148,197,255,0.16);
+
+    --c-robotics:#FFB454;
+    --c-signal:#5EEAD4;
+    --c-ai:#C4B5FD;
+    --c-automation:#A3E635;
+    --c-all:#7DD3FC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit;}
+  .mono{font-family:'Space Mono',monospace;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  ::selection{background:var(--c-robotics);color:#0A1220;}
+  :focus-visible{outline:2px solid var(--c-robotics);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .nav-id{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.02em;}
+  .nav-id .dot{color:var(--c-robotics);}
+  .nav-links{display:flex;gap:24px;font-size:13px;font-family:'Space Mono',monospace;}
+  .nav-links a{color:var(--text-dim);text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  @media (max-width:640px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 64px;position:relative;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;font-size:12px;color:var(--c-robotics);
+    letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--c-robotics);}
+  h1.title{
+    font-family:'Space Mono',monospace;font-weight:700;
+    font-size:clamp(38px, 7vw, 68px);line-height:1.05;letter-spacing:-0.01em;
+    margin-bottom:18px;
+  }
+  .subtitle{
+    font-size:clamp(15px,2vw,18px);color:var(--text-dim);max-width:620px;margin-bottom:36px;
+  }
+  .subtitle strong{color:var(--text);font-weight:600;}
+
+  .scope{
+    width:100%;height:120px;margin:20px 0 40px;
+    border:1px solid var(--border);border-radius:6px;background:var(--panel);
+    position:relative;overflow:hidden;
+  }
+  .scope svg{width:100%;height:100%;display:block;}
+  .scope-path{
+    fill:none;stroke:var(--c-robotics);stroke-width:2;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    animation:draw 2.6s ease-out forwards;
+    filter:drop-shadow(0 0 6px rgba(255,180,84,0.5));
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .scope-label{
+    position:absolute;top:10px;left:14px;font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-faint);letter-spacing:0.1em;
+  }
+
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Space Mono',monospace;font-size:13px;padding:12px 22px;border-radius:4px;
+    text-decoration:none;letter-spacing:0.02em;transition:transform .15s, box-shadow .15s;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--c-robotics);color:#0A1220;font-weight:700;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,180,84,0.25);}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);transform:translateY(-2px);}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:64px 0;position:relative;}
+  .divider{
+    display:flex;align-items:center;gap:12px;margin-bottom:6px;
+  }
+  .divider .node{width:7px;height:7px;border-radius:50%;background:var(--text-faint);}
+  .divider .line{flex:1;height:1px;background:repeating-linear-gradient(90deg, var(--border) 0 6px, transparent 6px 12px);}
+  .sec-num{font-family:'Space Mono',monospace;font-size:12px;color:var(--text-faint);}
+
+  h2.sec-title{
+    font-family:'Space Mono',monospace;font-size:clamp(24px,3.4vw,32px);
+    margin:14px 0 32px;font-weight:700;
+  }
+
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--text-dim);margin-bottom:16px;font-size:15px;}
+  .about-text strong{color:var(--text);}
+  .fact-panel{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px 24px;
+  }
+  .fact{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--border);font-size:13.5px;}
+  .fact:last-child{border-bottom:none;}
+  .fact-k{color:var(--text-faint);font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.06em;}
+  .fact-v{color:var(--text);text-align:right;}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  @media (max-width:700px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-panel{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px 22px;
+    border-left:3px solid var(--panel-color, var(--c-all));
+    transition:opacity .25s, transform .25s;
+  }
+  .skill-panel h3{
+    font-family:'Space Mono',monospace;font-size:13.5px;color:var(--panel-color, var(--c-all));
+    margin-bottom:12px;text-transform:uppercase;letter-spacing:0.04em;
+  }
+  .skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .skill-tag{
+    font-size:12px;color:var(--text-dim);border:1px solid var(--border);
+    padding:5px 10px;border-radius:20px;font-family:'Inter',sans-serif;
+  }
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{border-left:1px solid var(--border);padding-left:28px;display:flex;flex-direction:column;gap:36px;margin-left:6px;}
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:"";position:absolute;left:-33px;top:4px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--c-robotics);
+  }
+  .tl-role{font-weight:700;font-size:16px;}
+  .tl-org{color:var(--text-dim);font-size:14px;margin-bottom:4px;}
+  .tl-date{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text-faint);margin-bottom:10px;display:block;}
+  .tl-item ul{padding-left:18px;color:var(--text-dim);font-size:14px;display:flex;flex-direction:column;gap:6px;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media (max-width:760px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px;
+    position:relative;transition:transform .2s, border-color .2s;
+  }
+  .proj-card::before,.proj-card::after{
+    content:"";position:absolute;width:14px;height:14px;border:1.5px solid transparent;transition:border-color .2s;
+  }
+  .proj-card::before{top:-1px;left:-1px;border-top-color:var(--card-color,var(--c-all));border-left-color:var(--card-color,var(--c-all));border-top-left-radius:6px;}
+  .proj-card::after{bottom:-1px;right:-1px;border-bottom-color:var(--card-color,var(--c-all));border-right-color:var(--card-color,var(--c-all));border-bottom-right-radius:6px;}
+  .proj-card:hover{transform:translateY(-3px);}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+  .proj-title{font-weight:700;font-size:15.5px;}
+  .proj-date{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-faint);white-space:nowrap;}
+  .proj-desc{color:var(--text-dim);font-size:13.5px;margin-bottom:14px;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .proj-tag{
+    font-family:'Space Mono',monospace;font-size:10.5px;padding:3px 8px;border-radius:3px;
+    background:rgba(255,255,255,0.04);color:var(--card-color,var(--c-all));border:1px solid currentColor;
+  }
+  .proj-badge{
+    display:inline-block;margin-top:12px;font-family:'Space Mono',monospace;font-size:10.5px;
+    color:#0A1220;background:var(--c-robotics);padding:3px 9px;border-radius:3px;font-weight:700;
+  }
+
+  /* ---------- AWARDS / LEADERSHIP ---------- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+  .list-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px;}
+  .list-panel h3{font-family:'Space Mono',monospace;font-size:13px;color:var(--c-signal);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px;}
+  .li-item{padding:12px 0;border-bottom:1px dashed var(--border);}
+  .li-item:last-child{border-bottom:none;}
+  .li-title{font-weight:600;font-size:14px;}
+  .li-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-faint);margin-top:2px;}
+  .li-desc{color:var(--text-dim);font-size:13px;margin-top:6px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-panel{
+    background:var(--panel);border:1px solid var(--border);border-radius:10px;
+    padding:44px 36px;text-align:center;
+  }
+  .contact-panel h2{font-family:'Space Mono',monospace;font-size:clamp(22px,3vw,30px);margin-bottom:12px;}
+  .contact-panel p{color:var(--text-dim);margin-bottom:24px;}
+  .contact-email{
+    font-family:'Space Mono',monospace;font-size:16px;color:var(--c-robotics);text-decoration:none;
+    border-bottom:1px dashed var(--c-robotics);padding-bottom:2px;
+  }
+  .lang-row{display:flex;justify-content:center;gap:28px;margin-top:32px;flex-wrap:wrap;}
+  .lang-item{text-align:center;}
+  .lang-name{font-family:'Space Mono',monospace;font-size:12px;color:var(--text);}
+  .lang-level{font-size:11.5px;color:var(--text-faint);}
+
+  footer{padding:32px 0;text-align:center;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text-faint);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-id mono">MANAR<span class="dot">.</span>AFLI</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="hero">
+    <div class="eyebrow mono">INSAT · Tunis, Tunisia · Class of 2027</div>
+    <h1 class="title">Manar Afli</h1>
+    <p class="subtitle">
+      Final-year <strong>Industrial IT &amp; Automation Engineering</strong> student at INSAT,
+      specialized in embedded systems. Practical experience across
+      <strong>robotics</strong>, <strong>signal processing / AI</strong>, and
+      <strong>industrial automation</strong>, through coursework, internships, and applied projects.
+    </p>
+
+    <div class="scope">
+      <span class="scope-label mono">CH1 · SIGNAL.TRACE</span>
+      <svg viewBox="0 0 1000 120" preserveAspectRatio="none">
+        <path class="scope-path" d="M0,60 L60,60 L80,20 L100,100 L120,60 L200,60 L220,35 L235,85 L250,60 L340,60
+          L365,15 L385,105 L405,60 L460,60 L475,45 L490,75 L505,60 L600,60
+          L620,25 L640,95 L660,60 L760,60 L780,40 L800,80 L820,60 L900,60 L920,20 L940,100 L960,60 L1000,60"/>
+      </svg>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="divider"><span class="sec-num mono">01</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a final-year <strong>Industrial IT and Automation</strong> engineering student at INSAT (National Institute of Applied Science and Technology), specializing in the architecture and programming of embedded systems.</p>
+        <p>Over the course of my studies I've worked on projects and internships covering <strong>embedded systems and robotics</strong> (motor control, ROS2, gait algorithms), <strong>signal processing and machine learning</strong> (EEG classification, hyperspectral imaging, neural network optimization), and <strong>industrial automation</strong> (PLC programming, HMI development, production simulation).</p>
+        <p>Most recently a <strong>Technical Project Manager Intern</strong> on an autonomous mobile robotics platform at CyberMech Systems, and previously an automation intern at AS2E, programming industrial control systems in TIA Portal.</p>
+      </div>
+      <div class="fact-panel">
+        <div class="fact"><span class="fact-k mono">Institution</span><span class="fact-v">INSAT, Tunis</span></div>
+        <div class="fact"><span class="fact-k mono">Program</span><span class="fact-v">Industrial IT &amp; Automation, 2022–2027</span></div>
+        <div class="fact"><span class="fact-k mono">Focus</span><span class="fact-v">Embedded Systems Architecture</span></div>
+        <div class="fact"><span class="fact-k mono">Current role</span><span class="fact-v">Technical PM Intern, CyberMech Systems</span></div>
+        <div class="fact"><span class="fact-k mono">Email</span><span class="fact-v">manar.afli@insat.ucar.tn</span></div>
+        <div class="fact"><span class="fact-k mono">Languages</span><span class="fact-v">Arabic · French · English</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="divider"><span class="sec-num mono">02</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">Technical skills</h2>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill-panel" data-cat="robotics" style="--panel-color:#FFB454;">
+        <h3>Embedded &amp; Robotics</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">STM32 (ARM Cortex-M4)</span><span class="skill-tag">ESP32</span><span class="skill-tag">Arduino</span>
+          <span class="skill-tag">RTOS</span><span class="skill-tag">ROS2</span><span class="skill-tag">Gazebo</span>
+          <span class="skill-tag">PID tuning</span><span class="skill-tag">Servo / stepper control</span>
+          <span class="skill-tag">Pololu Maestro</span><span class="skill-tag">Quadruped gait algorithms</span>
+        </div>
+      </div>
+      <div class="skill-panel" data-cat="signal ai" style="--panel-color:#5EEAD4;">
+        <h3>Signal Processing &amp; AI</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">EEG processing (MNE-Python)</span><span class="skill-tag">CSP</span><span class="skill-tag">LDA</span>
+          <span class="skill-tag">CNN architecture</span><span class="skill-tag">TensorFlow / Keras</span><span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Hyperspectral classification</span><span class="skill-tag">Beamforming</span><span class="skill-tag">GANs</span>
+          <span class="skill-tag">Coyote Optimization Algorithm</span>
+        </div>
+      </div>
+      <div class="skill-panel" data-cat="automation" style="--panel-color:#A3E635;">
+        <h3>Industrial Automation &amp; Control</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">TIA Portal</span><span class="skill-tag">STEP 7</span><span class="skill-tag">S7-1500 PLC</span>
+          <span class="skill-tag">GRAFCET</span><span class="skill-tag">Ladder logic</span><span class="skill-tag">Factory I/O</span>
+          <span class="skill-tag">AnyLogic</span><span class="skill-tag">Simatic HMI</span><span class="skill-tag">IEC 62061</span>
+        </div>
+      </div>
+      <div class="skill-panel" data-cat="all" style="--panel-color:#7DD3FC;">
+        <h3>Programming &amp; Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">68K Assembly</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">MkDocs</span>
+          <span class="skill-tag">SolidWorks</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="divider"><span class="sec-num mono">03</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">Experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-role">Technical Project Manager Intern — Autonomous Mobile Robotics Platform</div>
+        <div class="tl-org">CyberMech Systems, Tunisia</div>
+        <span class="tl-date mono">JUL 2026 – AUG 2026</span>
+        <ul>
+          <li>Designed the MkDocs documentation server, managed the GitHub repository, and established development workflows.</li>
+          <li>Architected ROS2 packages with custom interfaces; set up Gazebo simulation and integrated an RGB camera with TF2 coordinate transforms.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-role">Industrial Automation Intern</div>
+        <div class="tl-org">AS2E Automation, Tunisia</div>
+        <span class="tl-date mono">JUL 2025</span>
+        <ul>
+          <li>Programmed TIA Portal / STEP 7 control systems, developing ladder logic and real-time control sequences for automated machinery.</li>
+          <li>Analyzed electrical schematics and circuits; researched functional safety standards (IEC 62061).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="divider"><span class="sec-num mono">04</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">Projects</h2>
+    <div class="proj-grid" id="projGrid">
+
+      <div class="proj-card" data-cat="robotics" style="--card-color:#FFB454;">
+        <div class="proj-top"><span class="proj-title">Quadruped Spider Robot</span><span class="proj-date mono">05/2026</span></div>
+        <p class="proj-desc">Final-year project: a Wi-Fi controlled spider robot for real-time corrosion inspection. Reverse-engineered creep/wave gait locomotion, drove 12 servo motors through a Pololu Maestro controller, and built mobile-app telemetry &amp; control.</p>
+        <div class="proj-tags"><span class="proj-tag">ESP32</span><span class="proj-tag">Pololu Maestro</span><span class="proj-tag">Gait algorithms</span></div>
+      </div>
+
+      <div class="proj-card" data-cat="signal ai" style="--card-color:#5EEAD4;">
+        <div class="proj-top"><span class="proj-title">EEG Motor Imagery Classification</span><span class="proj-date mono">2026</span></div>
+        <p class="proj-desc">Multi-subject BCI signal classification. Built a CSP + LDA feature pipeline and a CNN classifier, reaching 80%+ accuracy across four subject datasets with full cross-validation.</p>
+        <div class="proj-tags"><span class="proj-tag">MNE-Python</span><span class="proj-tag">CNN</span><span class="proj-tag">CSP / LDA</span></div>
+      </div>
+
+      <div class="proj-card" data-cat="ai" style="--card-color:#C4B5FD;">
+        <div class="proj-top"><span class="proj-title">Hyperspectral Image Classification</span><span class="proj-date mono">2026</span></div>
+        <p class="proj-desc">Supervised CNN for multi-class classification on the Salinas hyperspectral dataset — 16 agricultural classes across 224 spectral bands, reaching 95.78% accuracy.</p>
+        <div class="proj-tags"><span class="proj-tag">CNN</span><span class="proj-tag">Spectral features</span><span class="proj-tag">TensorFlow</span></div>
+      </div>
+
+      <div class="proj-card" data-cat="ai signal" style="--card-color:#C4B5FD;">
+        <div class="proj-top"><span class="proj-title">AI-Optimized Beamforming Model</span><span class="proj-date mono">2025</span></div>
+        <p class="proj-desc">Feedforward neural network tuned with a Coyote Optimization Algorithm for antenna beamforming prediction, plus a Conditional GAN for synthetic channel-data generation.</p>
+        <div class="proj-tags"><span class="proj-tag">FFNN</span><span class="proj-tag">GAN</span><span class="proj-tag">MATLAB</span></div>
+      </div>
+
+      <div class="proj-card" data-cat="automation" style="--card-color:#A3E635;">
+        <div class="proj-top"><span class="proj-title">Production Workflow Simulation</span><span class="proj-date mono">2026</span></div>
+        <p class="proj-desc">Discrete-event simulation of a 21-agent production line with live Excel-linked KPIs. Modeled breakdowns and material delays, cutting makespan from 271.96s to 222.96s — an 18% improvement.</p>
+        <div class="proj-tags"><span class="proj-tag">AnyLogic</span><span class="proj-tag">KPI analysis</span></div>
+      </div>
+
+      <div class="proj-card" data-cat="automation robotics" style="--card-color:#A3E635;">
+        <div class="proj-top"><span class="proj-title">Integrated Manufacturing Automation System</span><span class="proj-date mono">2025</span></div>
+        <p class="proj-desc">Full factory control system: an S7-1500 PLC programmed with GRAFCET and ladder logic, paired with a dual-screen Simatic HMI and a virtual production line built in Factory I/O.</p>
+        <div class="proj-tags"><span class="proj-tag">S7-1500</span><span class="proj-tag">GRAFCET</span><span class="proj-tag">HMI</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="divider"><span class="sec-num mono">05</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">Awards &amp; leadership</h2>
+    <div class="two-col">
+      <div class="list-panel">
+        <h3>Awards &amp; distinctions</h3>
+        <div class="li-item">
+          <div class="li-title">IEEE RAS Robotics Competition — Robocraft</div>
+          <div class="li-meta mono">TUNIS · 02/2024</div>
+          <div class="li-desc">Built an Arduino-based motor control system and tuned PID algorithms for autonomous obstacle detection.</div>
+        </div>
+        <div class="li-item">
+          <div class="li-title">IEEE TSYP 13.0 — IAS Challenge · Finalist</div>
+          <div class="li-meta mono">HAMMAMET · 2024</div>
+          <div class="li-desc">Evaluated the SIRI framework and ISA-95 standard for Industry 4.0 readiness assessment.</div>
+        </div>
+        <div class="li-item">
+          <div class="li-title">IEEE IASTAM 4.0 Annual Meeting · Finalist</div>
+          <div class="li-meta mono">SOUSSE · 2024</div>
+          <div class="li-desc">Researched digital-twin methodologies for linking virtual simulation with real manufacturing systems.</div>
+        </div>
+      </div>
+      <div class="list-panel">
+        <h3>Leadership &amp; engagement</h3>
+        <div class="li-item">
+          <div class="li-title">Committee Member — IEEE Region 8, Student &amp; Young Professionals</div>
+          <div class="li-meta mono">2024 – 2025</div>
+          <div class="li-desc">Helped organize international activities and collaborated with student teams across Region 8.</div>
+        </div>
+        <div class="li-item">
+          <div class="li-title">Workshop Coordinator — Aerobotix Club</div>
+          <div class="li-meta mono">03/2025</div>
+          <div class="li-desc">Led robotics and 3D-design workshops for students aged 10–18, including aircraft modeling sessions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="divider"><span class="sec-num mono">06</span><div class="line"></div><span class="node"></span></div>
+    <h2 class="sec-title">Contact</h2>
+    <div class="contact-panel">
+      <h2>Let's build something.</h2>
+      <p>Open to robotics, embedded systems, AI/signal processing, and industrial automation roles.</p>
+      <a class="contact-email" href="mailto:manar.afli@insat.ucar.tn">manar.afli@insat.ucar.tn</a>
+      <div class="lang-row">
+        <div class="lang-item"><div class="lang-name mono">ARABIC</div><div class="lang-level">Native</div></div>
+        <div class="lang-item"><div class="lang-name mono">FRENCH</div><div class="lang-level">Professional</div></div>
+        <div class="lang-item"><div class="lang-name mono">ENGLISH</div><div class="lang-level">Advanced · TOEIC 970/990</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 MANAR AFLI — BUILT WITH SIGNAL, STEEL &amp; STEP 7</footer>
+
+</body>
+</html>
