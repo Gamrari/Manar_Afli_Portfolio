@@ -747,6 +747,80 @@
 
       footer { flex-direction: column; }
     }
+
+    /* Soft floral details */
+.hero,
+.about-layout,
+.skill-card {
+  position: relative;
+}
+
+.hero::before,
+.hero::after,
+.about-layout::after,
+.skill-card::after {
+  position: absolute;
+  pointer-events: none;
+  font-family: Georgia, serif;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* Large, faint flower behind the hero */
+.hero::before {
+  content: "✿";
+  top: 45px;
+  right: 15px;
+  font-size: 180px;
+  opacity: .075;
+  transform: rotate(-18deg);
+}
+
+/* Small flower near the portrait */
+.hero::after {
+  content: "✿";
+  bottom: 90px;
+  left: 25px;
+  font-size: 52px;
+  opacity: .35;
+  transform: rotate(20deg);
+}
+
+/* Flower alongside the About section */
+.about-layout::after {
+  content: "✿";
+  right: -22px;
+  bottom: -52px;
+  font-size: 110px;
+  opacity: .11;
+  transform: rotate(25deg);
+}
+
+/* A small flower in each skills card */
+.skill-card::after {
+  content: "✿";
+  top: 20px;
+  right: 20px;
+  font-size: 23px;
+  opacity: .3;
+}
+
+@media (max-width: 700px) {
+  .hero::before {
+    top: 15px;
+    right: 0;
+    font-size: 100px;
+  }
+
+  .hero::after {
+    bottom: 25px;
+    left: 10px;
+  }
+
+  .about-layout::after {
+    display: none;
+  }
+}
   </style>
 </head>
 
