@@ -1,459 +1,1853 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manar Afli — Industrial IT &amp; Automation Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0A1220;
-    --panel:#0F1A2C;
-    --panel-2:#121F35;
-    --grid:rgba(148,197,255,0.07);
-    --grid-strong:rgba(148,197,255,0.14);
-    --text:#E8EEF7;
-    --text-dim:#8CA0BE;
-    --text-faint:#5A6E8C;
-    --border:rgba(148,197,255,0.16);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    --c-robotics:#FFB454;
-    --c-signal:#5EEAD4;
-    --c-ai:#C4B5FD;
-    --c-automation:#A3E635;
-    --c-all:#7DD3FC;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size:40px 40px;
-    overflow-x:hidden;
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
-  }
-  a{color:inherit;}
-  .mono{font-family:'Space Mono',monospace;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+    <title>Manar Afli — Industrial IT & Automation</title>
 
-  ::selection{background:var(--c-robotics);color:#0A1220;}
-  :focus-visible{outline:2px solid var(--c-robotics);outline-offset:3px;}
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  /* ---------- NAV ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(10,18,32,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    max-width:1080px;margin:0 auto;padding:16px 28px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
-  .nav-id{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.02em;}
-  .nav-id .dot{color:var(--c-robotics);}
-  .nav-links{display:flex;gap:24px;font-size:13px;font-family:'Space Mono',monospace;}
-  .nav-links a{color:var(--text-dim);text-decoration:none;transition:color .2s;}
-  .nav-links a:hover{color:var(--text);}
-  @media (max-width:640px){ .nav-links{display:none;} }
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  /* ---------- HERO ---------- */
-  .hero{padding:88px 0 64px;position:relative;}
-  .eyebrow{
-    font-family:'Space Mono',monospace;font-size:12px;color:var(--c-robotics);
-    letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px;
-    display:flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{content:"";width:22px;height:1px;background:var(--c-robotics);}
-  h1.title{
-    font-family:'Space Mono',monospace;font-weight:700;
-    font-size:clamp(38px, 7vw, 68px);line-height:1.05;letter-spacing:-0.01em;
-    margin-bottom:18px;
-  }
-  .subtitle{
-    font-size:clamp(15px,2vw,18px);color:var(--text-dim);max-width:620px;margin-bottom:36px;
-  }
-  .subtitle strong{color:var(--text);font-weight:600;}
+    <style>
 
-  .scope{
-    width:100%;height:120px;margin:20px 0 40px;
-    border:1px solid var(--border);border-radius:6px;background:var(--panel);
-    position:relative;overflow:hidden;
-  }
-  .scope svg{width:100%;height:100%;display:block;}
-  .scope-path{
-    fill:none;stroke:var(--c-robotics);stroke-width:2;
-    stroke-dasharray:1400;stroke-dashoffset:1400;
-    animation:draw 2.6s ease-out forwards;
-    filter:drop-shadow(0 0 6px rgba(255,180,84,0.5));
-  }
-  @keyframes draw{to{stroke-dashoffset:0;}}
-  .scope-label{
-    position:absolute;top:10px;left:14px;font-family:'Space Mono',monospace;
-    font-size:10px;color:var(--text-faint);letter-spacing:0.1em;
-  }
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
 
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{
-    font-family:'Space Mono',monospace;font-size:13px;padding:12px 22px;border-radius:4px;
-    text-decoration:none;letter-spacing:0.02em;transition:transform .15s, box-shadow .15s;
-    display:inline-block;
-  }
-  .btn-primary{background:var(--c-robotics);color:#0A1220;font-weight:700;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,180,84,0.25);}
-  .btn-ghost{border:1px solid var(--border);color:var(--text);}
-  .btn-ghost:hover{border-color:var(--text-dim);transform:translateY(-2px);}
+        :root {
+            --bg: #F5F2EC;
+            --surface: #FFFFFF;
 
-  /* ---------- SECTION SCAFFOLD ---------- */
-  section{padding:64px 0;position:relative;}
-  .divider{
-    display:flex;align-items:center;gap:12px;margin-bottom:6px;
-  }
-  .divider .node{width:7px;height:7px;border-radius:50%;background:var(--text-faint);}
-  .divider .line{flex:1;height:1px;background:repeating-linear-gradient(90deg, var(--border) 0 6px, transparent 6px 12px);}
-  .sec-num{font-family:'Space Mono',monospace;font-size:12px;color:var(--text-faint);}
+            --text: #1C1C1A;
+            --text-dim: #68655F;
+            --text-faint: #96928A;
 
-  h2.sec-title{
-    font-family:'Space Mono',monospace;font-size:clamp(24px,3.4vw,32px);
-    margin:14px 0 32px;font-weight:700;
-  }
+            --border: #D9D5CC;
 
-  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start;}
-  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
-  .about-text p{color:var(--text-dim);margin-bottom:16px;font-size:15px;}
-  .about-text strong{color:var(--text);}
-  .fact-panel{
-    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px 24px;
-  }
-  .fact{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--border);font-size:13.5px;}
-  .fact:last-child{border-bottom:none;}
-  .fact-k{color:var(--text-faint);font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.06em;}
-  .fact-v{color:var(--text);text-align:right;}
+            --accent: #D85C43;
+            --accent-light: #E9C9BF;
 
-  /* ---------- SKILLS ---------- */
-  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-  @media (max-width:700px){.skills-grid{grid-template-columns:1fr;}}
-  .skill-panel{
-    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px 22px;
-    border-left:3px solid var(--panel-color, var(--c-all));
-    transition:opacity .25s, transform .25s;
-  }
-  .skill-panel h3{
-    font-family:'Space Mono',monospace;font-size:13.5px;color:var(--panel-color, var(--c-all));
-    margin-bottom:12px;text-transform:uppercase;letter-spacing:0.04em;
-  }
-  .skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
-  .skill-tag{
-    font-size:12px;color:var(--text-dim);border:1px solid var(--border);
-    padding:5px 10px;border-radius:20px;font-family:'Inter',sans-serif;
-  }
-  /* ---------- EXPERIENCE ---------- */
-  .timeline{border-left:1px solid var(--border);padding-left:28px;display:flex;flex-direction:column;gap:36px;margin-left:6px;}
-  .tl-item{position:relative;}
-  .tl-item::before{
-    content:"";position:absolute;left:-33px;top:4px;width:11px;height:11px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--c-robotics);
-  }
-  .tl-role{font-weight:700;font-size:16px;}
-  .tl-org{color:var(--text-dim);font-size:14px;margin-bottom:4px;}
-  .tl-date{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text-faint);margin-bottom:10px;display:block;}
-  .tl-item ul{padding-left:18px;color:var(--text-dim);font-size:14px;display:flex;flex-direction:column;gap:6px;}
+            --max-width: 1180px;
+        }
 
-  /* ---------- PROJECTS ---------- */
-  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-  @media (max-width:760px){.proj-grid{grid-template-columns:1fr;}}
-  .proj-card{
-    background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px;
-    position:relative;transition:transform .2s, border-color .2s;
-  }
-  .proj-card::before,.proj-card::after{
-    content:"";position:absolute;width:14px;height:14px;border:1.5px solid transparent;transition:border-color .2s;
-  }
-  .proj-card::before{top:-1px;left:-1px;border-top-color:var(--card-color,var(--c-all));border-left-color:var(--card-color,var(--c-all));border-top-left-radius:6px;}
-  .proj-card::after{bottom:-1px;right:-1px;border-bottom-color:var(--card-color,var(--c-all));border-right-color:var(--card-color,var(--c-all));border-bottom-right-radius:6px;}
-  .proj-card:hover{transform:translateY(-3px);}
-  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
-  .proj-title{font-weight:700;font-size:15.5px;}
-  .proj-date{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-faint);white-space:nowrap;}
-  .proj-desc{color:var(--text-dim);font-size:13.5px;margin-bottom:14px;}
-  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .proj-tag{
-    font-family:'Space Mono',monospace;font-size:10.5px;padding:3px 8px;border-radius:3px;
-    background:rgba(255,255,255,0.04);color:var(--card-color,var(--c-all));border:1px solid currentColor;
-  }
-  .proj-badge{
-    display:inline-block;margin-top:12px;font-family:'Space Mono',monospace;font-size:10.5px;
-    color:#0A1220;background:var(--c-robotics);padding:3px 9px;border-radius:3px;font-weight:700;
-  }
 
-  /* ---------- AWARDS / LEADERSHIP ---------- */
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
-  .list-panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:22px;}
-  .list-panel h3{font-family:'Space Mono',monospace;font-size:13px;color:var(--c-signal);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px;}
-  .li-item{padding:12px 0;border-bottom:1px dashed var(--border);}
-  .li-item:last-child{border-bottom:none;}
-  .li-title{font-weight:600;font-size:14px;}
-  .li-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-faint);margin-top:2px;}
-  .li-desc{color:var(--text-dim);font-size:13px;margin-top:6px;}
+        /* =========================================================
+           RESET
+        ========================================================= */
 
-  /* ---------- CONTACT / FOOTER ---------- */
-  .contact-panel{
-    background:var(--panel);border:1px solid var(--border);border-radius:10px;
-    padding:44px 36px;text-align:center;
-  }
-  .contact-panel h2{font-family:'Space Mono',monospace;font-size:clamp(22px,3vw,30px);margin-bottom:12px;}
-  .contact-panel p{color:var(--text-dim);margin-bottom:24px;}
-  .contact-email{
-    font-family:'Space Mono',monospace;font-size:16px;color:var(--c-robotics);text-decoration:none;
-    border-bottom:1px dashed var(--c-robotics);padding-bottom:2px;
-  }
-  .lang-row{display:flex;justify-content:center;gap:28px;margin-top:32px;flex-wrap:wrap;}
-  .lang-item{text-align:center;}
-  .lang-name{font-family:'Space Mono',monospace;font-size:12px;color:var(--text);}
-  .lang-level{font-size:11.5px;color:var(--text-faint);}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  footer{padding:32px 0;text-align:center;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text-faint);}
-</style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        header.nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+
+            background: rgba(245, 242, 236, 0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .nav-id {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+        }
+
+        .nav-id span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cv {
+            padding-left: 20px;
+            border-left: 1px solid var(--border);
+            color: var(--text) !important;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 82vh;
+
+            display: grid;
+            grid-template-columns: 1.5fr 0.7fr;
+            align-items: center;
+            gap: 80px;
+
+            padding: 100px 0 120px;
+        }
+
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(58px, 8vw, 108px);
+            line-height: 0.94;
+            letter-spacing: -0.065em;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .hero-title em {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            letter-spacing: -0.035em;
+        }
+
+        .hero-description {
+            max-width: 620px;
+
+            font-size: 18px;
+            line-height: 1.75;
+            color: var(--text-dim);
+
+            margin-bottom: 36px;
+        }
+
+        .hero-description strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 13px 20px;
+
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+
+            text-decoration: none;
+
+            border: 1px solid var(--text);
+            transition: all 0.2s ease;
+        }
+
+        .button-primary {
+            background: var(--text);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .button-secondary {
+            border-color: var(--border);
+            color: var(--text-dim);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .hero-side {
+            align-self: center;
+        }
+
+        .hero-note {
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+            margin-bottom: 34px;
+        }
+
+        .hero-note:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-note-label {
+            display: block;
+
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            margin-bottom: 7px;
+        }
+
+        .hero-note-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           SECTION SYSTEM
+        ========================================================= */
+
+        section {
+            padding: 110px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .section-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            padding-top: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 5vw, 62px);
+            line-height: 1;
+            letter-spacing: -0.055em;
+            font-weight: 600;
+        }
+
+        .section-title em {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 100px;
+        }
+
+        .about-copy p {
+            max-width: 680px;
+
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--text-dim);
+
+            margin-bottom: 24px;
+        }
+
+        .about-copy strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .facts {
+            border-top: 1px solid var(--border);
+        }
+
+        .fact {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 20px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fact-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+            text-transform: uppercase;
+        }
+
+        .fact-value {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           EXPERIENCE
+        ========================================================= */
+
+        .experience-list {
+            border-top: 1px solid var(--border);
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 160px 1fr 220px;
+            gap: 50px;
+
+            padding: 38px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+            text-transform: uppercase;
+        }
+
+        .experience-role {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .experience-description {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .experience-description li {
+            margin-bottom: 7px;
+        }
+
+        .experience-focus {
+            align-self: start;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+            line-height: 1.8;
+            text-align: right;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects {
+            border-top: 1px solid var(--border);
+        }
+
+        .project {
+            display: grid;
+            grid-template-columns: 80px 1fr 300px;
+            gap: 45px;
+
+            padding: 48px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            transition: padding 0.25s ease;
+        }
+
+        .project:hover {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .project-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .project-main {
+            min-width: 0;
+        }
+
+        .project-title {
+            font-size: clamp(25px, 3vw, 36px);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+            margin-bottom: 14px;
+        }
+
+        .project-description {
+            max-width: 680px;
+
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 14px;
+        }
+
+        .project-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+        }
+
+        .project-tags {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+
+            padding: 5px 8px;
+
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 100px;
+        }
+
+        .skill-group {
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .skill-group-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+
+            margin-bottom: 13px;
+        }
+
+        .skill-list {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .skill-list span:not(:last-child)::after {
+            content: " · ";
+            color: var(--text-faint);
+        }
+
+
+        /* =========================================================
+           AWARDS / LEADERSHIP
+        ========================================================= */
+
+        .secondary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+        }
+
+        .secondary-column h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+
+            margin-bottom: 20px;
+        }
+
+        .secondary-item {
+            padding: 22px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .secondary-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .secondary-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--text-faint);
+            margin-bottom: 10px;
+        }
+
+        .secondary-description {
+            color: var(--text-dim);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: end;
+        }
+
+        .contact-title {
+            font-size: clamp(42px, 6vw, 78px);
+            line-height: 0.98;
+            letter-spacing: -0.06em;
+            margin-bottom: 28px;
+        }
+
+        .contact-title em {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+
+        .contact-text {
+            max-width: 520px;
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+
+            padding: 17px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--text-faint);
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            font-size: 13px;
+            text-align: right;
+        }
+
+        .contact-value a {
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 35px 0;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--text-faint);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding-top: 80px;
+            }
+
+            .hero-side {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .hero-note {
+                margin-bottom: 0;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .experience-item {
+                grid-template-columns: 120px 1fr;
+                gap: 30px;
+            }
+
+            .experience-focus {
+                display: none;
+            }
+
+            .project {
+                grid-template-columns: 60px 1fr;
+                gap: 30px;
+            }
+
+            .project-meta {
+                grid-column: 2;
+                align-items: flex-start;
+                flex-direction: row;
+            }
+
+            .project-tags {
+                justify-content: flex-start;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .wrap {
+                padding: 0 22px;
+            }
+
+            .nav-inner {
+                padding: 17px 22px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 75px 0 90px;
+            }
+
+            .hero-title {
+                font-size: clamp(52px, 16vw, 82px);
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-side {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .hero-note {
+                padding: 15px 0;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 45px;
+            }
+
+            .section-number {
+                padding-top: 0;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 30px 0;
+            }
+
+            .project {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 35px 0;
+            }
+
+            .project-number {
+                margin-bottom: 3px;
+            }
+
+            .project-meta {
+                grid-column: auto;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+                column-gap: 0;
+            }
+
+            .secondary-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-layout {
+                gap: 50px;
+            }
+
+            .contact-title {
+                font-size: 52px;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .contact-value {
+                text-align: left;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+    </style>
 </head>
+
+
 <body>
 
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
 <header class="nav">
-  <div class="nav-inner">
-    <div class="nav-id mono">MANAR<span class="dot">.</span>AFLI</div>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#awards">Awards</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+
+    <div class="nav-inner">
+
+        <a href="#top" class="nav-id">
+            MANAR<span>.</span>AFLI
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="#about">ABOUT</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#projects">WORK</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#contact">CONTACT</a>
+
+            <!-- Replace this with your actual CV file -->
+            <a href="#" class="nav-cv">CV ↗</a>
+
+        </nav>
+
+    </div>
+
 </header>
 
-<main class="wrap">
 
-  <section class="hero" id="hero">
-    <div class="eyebrow mono">INSAT · Tunis, Tunisia · Class of 2027</div>
-    <h1 class="title">Manar Afli</h1>
-    <p class="subtitle">
-      Final-year <strong>Industrial IT &amp; Automation Engineering</strong> student at INSAT,
-      specialized in embedded systems. Practical experience across
-      <strong>robotics</strong>, <strong>signal processing / AI</strong>, and
-      <strong>industrial automation</strong>, through coursework, internships, and applied projects.
-    </p>
+<main id="top">
 
-    <div class="scope">
-      <span class="scope-label mono">CH1 · SIGNAL.TRACE</span>
-      <svg viewBox="0 0 1000 120" preserveAspectRatio="none">
-        <path class="scope-path" d="M0,60 L60,60 L80,20 L100,100 L120,60 L200,60 L220,35 L235,85 L250,60 L340,60
-          L365,15 L385,105 L405,60 L460,60 L475,45 L490,75 L505,60 L600,60
-          L620,25 L640,95 L660,60 L760,60 L780,40 L800,80 L820,60 L900,60 L920,20 L940,100 L960,60 L1000,60"/>
-      </svg>
+
+<div class="wrap">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div>
+
+        <div class="hero-kicker">
+            INSAT · TUNISIA · CLASS OF 2027
+        </div>
+
+        <h1 class="hero-title">
+            Manar<br>
+            <em>Afli.</em>
+        </h1>
+
+        <p class="hero-description">
+            Industrial IT &amp; Automation Engineering student interested in
+            <strong>robotics</strong>, <strong>embedded systems</strong>,
+            and <strong>industrial automation</strong>.
+            I like building systems where software has to interact with the
+            physical world.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#projects" class="button button-primary">
+                VIEW MY WORK →
+            </a>
+
+            <a href="#contact" class="button button-secondary">
+                GET IN TOUCH
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">View projects</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
-    </div>
-  </section>
 
-  <section id="about">
-    <div class="divider"><span class="sec-num mono">01</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">About</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a final-year <strong>Industrial IT and Automation</strong> engineering student at INSAT (National Institute of Applied Science and Technology), specializing in the architecture and programming of embedded systems.</p>
-        <p>Over the course of my studies I've worked on projects and internships covering <strong>embedded systems and robotics</strong> (motor control, ROS2, gait algorithms), <strong>signal processing and machine learning</strong> (EEG classification, hyperspectral imaging, neural network optimization), and <strong>industrial automation</strong> (PLC programming, HMI development, production simulation).</p>
-        <p>Most recently a <strong>Technical Project Manager Intern</strong> on an autonomous mobile robotics platform at CyberMech Systems, and previously an automation intern at AS2E, programming industrial control systems in TIA Portal.</p>
-      </div>
-      <div class="fact-panel">
-        <div class="fact"><span class="fact-k mono">Institution</span><span class="fact-v">INSAT, Tunis</span></div>
-        <div class="fact"><span class="fact-k mono">Program</span><span class="fact-v">Industrial IT &amp; Automation, 2022–2027</span></div>
-        <div class="fact"><span class="fact-k mono">Focus</span><span class="fact-v">Embedded Systems Architecture</span></div>
-        <div class="fact"><span class="fact-k mono">Current role</span><span class="fact-v">Technical PM Intern, CyberMech Systems</span></div>
-        <div class="fact"><span class="fact-k mono">Email</span><span class="fact-v">manar.afli@insat.ucar.tn</span></div>
-        <div class="fact"><span class="fact-k mono">Languages</span><span class="fact-v">Arabic · French · English</span></div>
-      </div>
-    </div>
-  </section>
+    <aside class="hero-side">
 
-  <section id="skills">
-    <div class="divider"><span class="sec-num mono">02</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">Technical skills</h2>
-    <div class="skills-grid" id="skillsGrid">
-      <div class="skill-panel" data-cat="robotics" style="--panel-color:#FFB454;">
-        <h3>Embedded &amp; Robotics</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">STM32 (ARM Cortex-M4)</span><span class="skill-tag">ESP32</span><span class="skill-tag">Arduino</span>
-          <span class="skill-tag">RTOS</span><span class="skill-tag">ROS2</span><span class="skill-tag">Gazebo</span>
-          <span class="skill-tag">PID tuning</span><span class="skill-tag">Servo / stepper control</span>
-          <span class="skill-tag">Pololu Maestro</span><span class="skill-tag">Quadruped gait algorithms</span>
+        <div class="hero-note">
+
+            <span class="hero-note-label">
+                Currently
+            </span>
+
+            <div class="hero-note-value">
+                Robotics / Technical Project Work
+            </div>
+
         </div>
-      </div>
-      <div class="skill-panel" data-cat="signal ai" style="--panel-color:#5EEAD4;">
-        <h3>Signal Processing &amp; AI</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">EEG processing (MNE-Python)</span><span class="skill-tag">CSP</span><span class="skill-tag">LDA</span>
-          <span class="skill-tag">CNN architecture</span><span class="skill-tag">TensorFlow / Keras</span><span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">Hyperspectral classification</span><span class="skill-tag">Beamforming</span><span class="skill-tag">GANs</span>
-          <span class="skill-tag">Coyote Optimization Algorithm</span>
+
+
+        <div class="hero-note">
+
+            <span class="hero-note-label">
+                Studying
+            </span>
+
+            <div class="hero-note-value">
+                Industrial IT &amp; Automation
+            </div>
+
         </div>
-      </div>
-      <div class="skill-panel" data-cat="automation" style="--panel-color:#A3E635;">
-        <h3>Industrial Automation &amp; Control</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">TIA Portal</span><span class="skill-tag">STEP 7</span><span class="skill-tag">S7-1500 PLC</span>
-          <span class="skill-tag">GRAFCET</span><span class="skill-tag">Ladder logic</span><span class="skill-tag">Factory I/O</span>
-          <span class="skill-tag">AnyLogic</span><span class="skill-tag">Simatic HMI</span><span class="skill-tag">IEC 62061</span>
+
+
+        <div class="hero-note">
+
+            <span class="hero-note-label">
+                Based in
+            </span>
+
+            <div class="hero-note-value">
+                Tunis, Tunisia
+            </div>
+
         </div>
-      </div>
-      <div class="skill-panel" data-cat="all" style="--panel-color:#7DD3FC;">
-        <h3>Programming &amp; Tools</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">68K Assembly</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">MkDocs</span>
-          <span class="skill-tag">SolidWorks</span>
+
+    </aside>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            01 / ABOUT
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="experience">
-    <div class="divider"><span class="sec-num mono">03</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">Experience</h2>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-role">Technical Project Manager Intern — Autonomous Mobile Robotics Platform</div>
-        <div class="tl-org">CyberMech Systems, Tunisia</div>
-        <span class="tl-date mono">JUL 2026 – AUG 2026</span>
-        <ul>
-          <li>Designed the MkDocs documentation server, managed the GitHub repository, and established development workflows.</li>
-          <li>Architected ROS2 packages with custom interfaces; set up Gazebo simulation and integrated an RGB camera with TF2 coordinate transforms.</li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-role">Industrial Automation Intern</div>
-        <div class="tl-org">AS2E Automation, Tunisia</div>
-        <span class="tl-date mono">JUL 2025</span>
-        <ul>
-          <li>Programmed TIA Portal / STEP 7 control systems, developing ladder logic and real-time control sequences for automated machinery.</li>
-          <li>Analyzed electrical schematics and circuits; researched functional safety standards (IEC 62061).</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="divider"><span class="sec-num mono">04</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">Projects</h2>
-    <div class="proj-grid" id="projGrid">
-
-      <div class="proj-card" data-cat="robotics" style="--card-color:#FFB454;">
-        <div class="proj-top"><span class="proj-title">Quadruped Spider Robot</span><span class="proj-date mono">05/2026</span></div>
-        <p class="proj-desc">Final-year project: a Wi-Fi controlled spider robot for real-time corrosion inspection. Reverse-engineered creep/wave gait locomotion, drove 12 servo motors through a Pololu Maestro controller, and built mobile-app telemetry &amp; control.</p>
-        <div class="proj-tags"><span class="proj-tag">ESP32</span><span class="proj-tag">Pololu Maestro</span><span class="proj-tag">Gait algorithms</span></div>
-      </div>
-
-      <div class="proj-card" data-cat="signal ai" style="--card-color:#5EEAD4;">
-        <div class="proj-top"><span class="proj-title">EEG Motor Imagery Classification</span><span class="proj-date mono">2026</span></div>
-        <p class="proj-desc">Multi-subject BCI signal classification. Built a CSP + LDA feature pipeline and a CNN classifier, reaching 80%+ accuracy across four subject datasets with full cross-validation.</p>
-        <div class="proj-tags"><span class="proj-tag">MNE-Python</span><span class="proj-tag">CNN</span><span class="proj-tag">CSP / LDA</span></div>
-      </div>
-
-      <div class="proj-card" data-cat="ai" style="--card-color:#C4B5FD;">
-        <div class="proj-top"><span class="proj-title">Hyperspectral Image Classification</span><span class="proj-date mono">2026</span></div>
-        <p class="proj-desc">Supervised CNN for multi-class classification on the Salinas hyperspectral dataset — 16 agricultural classes across 224 spectral bands, reaching 95.78% accuracy.</p>
-        <div class="proj-tags"><span class="proj-tag">CNN</span><span class="proj-tag">Spectral features</span><span class="proj-tag">TensorFlow</span></div>
-      </div>
-
-      <div class="proj-card" data-cat="ai signal" style="--card-color:#C4B5FD;">
-        <div class="proj-top"><span class="proj-title">AI-Optimized Beamforming Model</span><span class="proj-date mono">2025</span></div>
-        <p class="proj-desc">Feedforward neural network tuned with a Coyote Optimization Algorithm for antenna beamforming prediction, plus a Conditional GAN for synthetic channel-data generation.</p>
-        <div class="proj-tags"><span class="proj-tag">FFNN</span><span class="proj-tag">GAN</span><span class="proj-tag">MATLAB</span></div>
-      </div>
-
-      <div class="proj-card" data-cat="automation" style="--card-color:#A3E635;">
-        <div class="proj-top"><span class="proj-title">Production Workflow Simulation</span><span class="proj-date mono">2026</span></div>
-        <p class="proj-desc">Discrete-event simulation of a 21-agent production line with live Excel-linked KPIs. Modeled breakdowns and material delays, cutting makespan from 271.96s to 222.96s — an 18% improvement.</p>
-        <div class="proj-tags"><span class="proj-tag">AnyLogic</span><span class="proj-tag">KPI analysis</span></div>
-      </div>
-
-      <div class="proj-card" data-cat="automation robotics" style="--card-color:#A3E635;">
-        <div class="proj-top"><span class="proj-title">Integrated Manufacturing Automation System</span><span class="proj-date mono">2025</span></div>
-        <p class="proj-desc">Full factory control system: an S7-1500 PLC programmed with GRAFCET and ladder logic, paired with a dual-screen Simatic HMI and a virtual production line built in Factory I/O.</p>
-        <div class="proj-tags"><span class="proj-tag">S7-1500</span><span class="proj-tag">GRAFCET</span><span class="proj-tag">HMI</span></div>
-      </div>
+        <h2 class="section-title">
+            A little about <em>me.</em>
+        </h2>
 
     </div>
-  </section>
 
-  <section id="awards">
-    <div class="divider"><span class="sec-num mono">05</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">Awards &amp; leadership</h2>
-    <div class="two-col">
-      <div class="list-panel">
-        <h3>Awards &amp; distinctions</h3>
-        <div class="li-item">
-          <div class="li-title">IEEE RAS Robotics Competition — Robocraft</div>
-          <div class="li-meta mono">TUNIS · 02/2024</div>
-          <div class="li-desc">Built an Arduino-based motor control system and tuned PID algorithms for autonomous obstacle detection.</div>
-        </div>
-        <div class="li-item">
-          <div class="li-title">IEEE TSYP 13.0 — IAS Challenge · Finalist</div>
-          <div class="li-meta mono">HAMMAMET · 2024</div>
-          <div class="li-desc">Evaluated the SIRI framework and ISA-95 standard for Industry 4.0 readiness assessment.</div>
-        </div>
-        <div class="li-item">
-          <div class="li-title">IEEE IASTAM 4.0 Annual Meeting · Finalist</div>
-          <div class="li-meta mono">SOUSSE · 2024</div>
-          <div class="li-desc">Researched digital-twin methodologies for linking virtual simulation with real manufacturing systems.</div>
-        </div>
-      </div>
-      <div class="list-panel">
-        <h3>Leadership &amp; engagement</h3>
-        <div class="li-item">
-          <div class="li-title">Committee Member — IEEE Region 8, Student &amp; Young Professionals</div>
-          <div class="li-meta mono">2024 – 2025</div>
-          <div class="li-desc">Helped organize international activities and collaborated with student teams across Region 8.</div>
-        </div>
-        <div class="li-item">
-          <div class="li-title">Workshop Coordinator — Aerobotix Club</div>
-          <div class="li-meta mono">03/2025</div>
-          <div class="li-desc">Led robotics and 3D-design workshops for students aged 10–18, including aircraft modeling sessions.</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact">
-    <div class="divider"><span class="sec-num mono">06</span><div class="line"></div><span class="node"></span></div>
-    <h2 class="sec-title">Contact</h2>
-    <div class="contact-panel">
-      <h2>Let's build something.</h2>
-      <p>Open to robotics, embedded systems, AI/signal processing, and industrial automation roles.</p>
-      <a class="contact-email" href="mailto:manar.afli@insat.ucar.tn">manar.afli@insat.ucar.tn</a>
-      <div class="lang-row">
-        <div class="lang-item"><div class="lang-name mono">ARABIC</div><div class="lang-level">Native</div></div>
-        <div class="lang-item"><div class="lang-name mono">FRENCH</div><div class="lang-level">Professional</div></div>
-        <div class="lang-item"><div class="lang-name mono">ENGLISH</div><div class="lang-level">Advanced · TOEIC 970/990</div></div>
-      </div>
+    <div class="about-layout">
+
+
+        <div class="about-copy">
+
+            <p>
+                I'm a final-year <strong>Industrial IT and Automation</strong>
+                engineering student at INSAT, with a focus on embedded systems,
+                robotics and control.
+            </p>
+
+            <p>
+                Throughout my studies, I've worked on projects involving
+                <strong>embedded systems, robotics, signal processing,
+                industrial automation and control</strong>.
+            </p>
+
+            <p>
+                My projects range from a quadruped robotic platform and
+                autonomous mobile robotics to EEG signal processing,
+                PLC-based manufacturing systems and control simulations.
+            </p>
+
+            <p>
+                I enjoy working across the boundary between software,
+                electronics and physical systems.
+            </p>
+
+        </div>
+
+
+        <div class="facts">
+
+            <div class="fact">
+                <span class="fact-label">Institution</span>
+                <span class="fact-value">INSAT, Tunis</span>
+            </div>
+
+            <div class="fact">
+                <span class="fact-label">Program</span>
+                <span class="fact-value">
+                    Industrial IT &amp; Automation<br>
+                    2022–2027
+                </span>
+            </div>
+
+            <div class="fact">
+                <span class="fact-label">Focus</span>
+                <span class="fact-value">
+                    Robotics &amp; Embedded Systems
+                </span>
+            </div>
+
+            <div class="fact">
+                <span class="fact-label">Email</span>
+                <span class="fact-value">
+                    manar.afli@insat.ucar.tn
+                </span>
+            </div>
+
+            <div class="fact">
+                <span class="fact-label">Languages</span>
+                <span class="fact-value">
+                    Arabic · French · English
+                </span>
+            </div>
+
+        </div>
+
     </div>
-  </section>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section id="experience">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            02 / EXPERIENCE
+        </div>
+
+        <h2 class="section-title">
+            Where I've <em>worked.</em>
+        </h2>
+
+    </div>
+
+
+    <div class="experience-list">
+
+
+        <!-- EXPERIENCE 01 -->
+
+        <article class="experience-item">
+
+            <div class="experience-date">
+                JUL 2026 — AUG 2026
+            </div>
+
+
+            <div>
+
+                <h3 class="experience-role">
+                    Technical Project Manager Intern
+                </h3>
+
+                <div class="experience-company">
+                    CyberMech Systems · Tunisia
+                </div>
+
+                <ul class="experience-description">
+
+                    <li>
+                        Worked on an autonomous mobile robotics platform,
+                        including technical documentation and development workflows.
+                    </li>
+
+                    <li>
+                        Managed the GitHub repository and documentation
+                        infrastructure using MkDocs.
+                    </li>
+
+                    <li>
+                        Worked with ROS 2 packages, custom interfaces,
+                        Gazebo simulation and RGB camera integration.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="experience-focus">
+                ROBOTICS<br>
+                ROS 2<br>
+                GAZEBO<br>
+                DOCUMENTATION
+            </div>
+
+        </article>
+
+
+
+        <!-- EXPERIENCE 02 -->
+
+        <article class="experience-item">
+
+            <div class="experience-date">
+                JUL 2025
+            </div>
+
+
+            <div>
+
+                <h3 class="experience-role">
+                    Industrial Automation Intern
+                </h3>
+
+                <div class="experience-company">
+                    AS2E Automation · Tunisia
+                </div>
+
+                <ul class="experience-description">
+
+                    <li>
+                        Programmed industrial control systems using
+                        TIA Portal and STEP 7.
+                    </li>
+
+                    <li>
+                        Worked with ladder logic and real-time control
+                        sequences for automated machinery.
+                    </li>
+
+                    <li>
+                        Analyzed electrical schematics and researched
+                        functional safety according to IEC 62061.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="experience-focus">
+                INDUSTRIAL<br>
+                AUTOMATION<br>
+                PLC<br>
+                TIA PORTAL
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            03 / SELECTED WORK
+        </div>
+
+        <h2 class="section-title">
+            Things I've <em>built.</em>
+        </h2>
+
+    </div>
+
+
+    <div class="projects">
+
+
+        <!-- PROJECT 01 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                01
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    Quadruped Spider Robot
+                </h3>
+
+                <p class="project-description">
+                    A Wi-Fi controlled quadruped robotic platform developed
+                    for real-time corrosion inspection. The system uses
+                    12 servo motors and implements creep/wave gait locomotion,
+                    with an ESP32-based control architecture.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    05 / 2026
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">ESP32</span>
+                    <span class="project-tag">12 DOF</span>
+                    <span class="project-tag">SERVO CONTROL</span>
+                    <span class="project-tag">GAIT</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                02
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    EEG Motor Imagery Classification
+                </h3>
+
+                <p class="project-description">
+                    EEG signal processing project focused on motor imagery
+                    classification. Built a CSP + LDA pipeline and explored
+                    CNN-based classification across multiple subjects.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    2026
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">EEG</span>
+                    <span class="project-tag">MNE</span>
+                    <span class="project-tag">CSP</span>
+                    <span class="project-tag">LDA</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 03 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                03
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    Hyperspectral Image Classification
+                </h3>
+
+                <p class="project-description">
+                    Supervised classification project using the Salinas
+                    hyperspectral dataset, covering multiple agricultural
+                    classes and spectral bands.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    2026
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">CNN</span>
+                    <span class="project-tag">HYPERSPECTRAL</span>
+                    <span class="project-tag">TENSORFLOW</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 04 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                04
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    AI-Optimized Beamforming
+                </h3>
+
+                <p class="project-description">
+                    A beamforming prediction project using a feedforward
+                    neural network optimized with the Coyote Optimization
+                    Algorithm, alongside experiments with synthetic
+                    channel-data generation.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    2025
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">MATLAB</span>
+                    <span class="project-tag">FFNN</span>
+                    <span class="project-tag">GAN</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 05 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                05
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    Production Workflow Simulation
+                </h3>
+
+                <p class="project-description">
+                    Discrete-event simulation of a production line with
+                    breakdowns, material delays and KPI monitoring.
+                    The project explored production performance and
+                    workflow optimization.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    2026
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">ANYLOGIC</span>
+                    <span class="project-tag">SIMULATION</span>
+                    <span class="project-tag">KPI</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 06 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                06
+            </div>
+
+            <div class="project-main">
+
+                <h3 class="project-title">
+                    Integrated Manufacturing Automation System
+                </h3>
+
+                <p class="project-description">
+                    Factory automation project combining an S7-1500 PLC,
+                    GRAFCET and ladder logic, a dual-screen Simatic HMI
+                    and a virtual production line developed with Factory I/O.
+                </p>
+
+            </div>
+
+            <div class="project-meta">
+
+                <span class="project-date">
+                    2025
+                </span>
+
+                <div class="project-tags">
+                    <span class="project-tag">S7-1500</span>
+                    <span class="project-tag">GRAFCET</span>
+                    <span class="project-tag">HMI</span>
+                    <span class="project-tag">FACTORY I/O</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section id="skills">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            04 / SKILLS
+        </div>
+
+        <h2 class="section-title">
+            Tools I <em>use.</em>
+        </h2>
+
+    </div>
+
+
+    <div class="skills-layout">
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Programming
+            </div>
+
+            <div class="skill-list">
+                <span>C++</span>
+                <span>Python</span>
+                <span>MATLAB</span>
+                <span>C</span>
+                <span>Java</span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Embedded systems
+            </div>
+
+            <div class="skill-list">
+                <span>STM32</span>
+                <span>ESP32</span>
+                <span>Arduino</span>
+                <span>FreeRTOS</span>
+                <span>Embedded Linux</span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Robotics
+            </div>
+
+            <div class="skill-list">
+                <span>ROS 2</span>
+                <span>Gazebo</span>
+                <span>Motor control</span>
+                <span>Servo control</span>
+                <span>CAD</span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Industrial automation
+            </div>
+
+            <div class="skill-list">
+                <span>TIA Portal</span>
+                <span>STEP 7</span>
+                <span>GRAFCET</span>
+                <span>PLC</span>
+                <span>Factory I/O</span>
+                <span>HMI</span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Signal processing
+            </div>
+
+            <div class="skill-list">
+                <span>EEG</span>
+                <span>MNE-Python</span>
+                <span>CSP</span>
+                <span>LDA</span>
+            </div>
+
+        </div>
+
+
+        <div class="skill-group">
+
+            <div class="skill-group-title">
+                Tools
+            </div>
+
+            <div class="skill-list">
+                <span>Git</span>
+                <span>GitHub</span>
+                <span>SolidWorks</span>
+                <span>MkDocs</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     AWARDS & LEADERSHIP
+========================================================= -->
+
+<section>
+
+    <div class="section-header">
+
+        <div class="section-number">
+            05 / BEYOND ENGINEERING
+        </div>
+
+        <h2 class="section-title">
+            More than <em>projects.</em>
+        </h2>
+
+    </div>
+
+
+    <div class="secondary-grid">
+
+
+        <!-- AWARDS -->
+
+        <div class="secondary-column">
+
+            <h3>
+                Awards &amp; distinctions
+            </h3>
+
+
+            <div class="secondary-item">
+
+                <div class="secondary-title">
+                    IEEE RAS Robotics Competition — Robocraft
+                </div>
+
+                <div class="secondary-meta">
+                    TUNIS · 02 / 2024
+                </div>
+
+                <div class="secondary-description">
+                    Built an Arduino-based motor control system and
+                    tuned PID algorithms for autonomous obstacle detection.
+                </div>
+
+            </div>
+
+
+            <div class="secondary-item">
+
+                <div class="secondary-title">
+                    IEEE TSYP 13.0 — IAS Challenge · Finalist
+                </div>
+
+                <div class="secondary-meta">
+                    HAMMAMET · 2024
+                </div>
+
+                <div class="secondary-description">
+                    Worked on Industry 4.0 readiness assessment using
+                    the SIRI framework and ISA-95 standard.
+                </div>
+
+            </div>
+
+
+            <div class="secondary-item">
+
+                <div class="secondary-title">
+                    IEEE IASTAM 4.0 Annual Meeting · Finalist
+                </div>
+
+                <div class="secondary-meta">
+                    SOUSSE · 2024
+                </div>
+
+                <div class="secondary-description">
+                    Researched digital-twin methodologies for connecting
+                    virtual simulation with real manufacturing systems.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LEADERSHIP -->
+
+        <div class="secondary-column">
+
+            <h3>
+                Leadership &amp; engagement
+            </h3>
+
+
+            <div class="secondary-item">
+
+                <div class="secondary-title">
+                    IEEE Region 8 — Student &amp; Young Professionals
+                </div>
+
+                <div class="secondary-meta">
+                    2024 — 2025
+                </div>
+
+                <div class="secondary-description">
+                    Contributed to international activities and collaborated
+                    with student teams across IEEE Region 8.
+                </div>
+
+            </div>
+
+
+            <div class="secondary-item">
+
+                <div class="secondary-title">
+                    Workshop Coordinator — Aerobotix Club
+                </div>
+
+                <div class="secondary-meta">
+                    03 / 2025
+                </div>
+
+                <div class="secondary-description">
+                    Led robotics and 3D-design workshops for students
+                    aged 10–18, including aircraft modelling sessions.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+    <div class="contact-layout">
+
+
+        <div>
+
+            <h2 class="contact-title">
+                Let's talk<br>
+                <em>engineering.</em>
+            </h2>
+
+            <p class="contact-text">
+                I'm currently interested in opportunities involving
+                robotics, embedded systems and industrial automation.
+            </p>
+
+        </div>
+
+
+        <div class="contact-details">
+
+
+            <div class="contact-row">
+
+                <span class="contact-label">
+                    Email
+                </span>
+
+                <span class="contact-value">
+                    <a href="mailto:manar.afli@insat.ucar.tn">
+                        manar.afli@insat.ucar.tn
+                    </a>
+                </span>
+
+            </div>
+
+
+            <div class="contact-row">
+
+                <span class="contact-label">
+                    LinkedIn
+                </span>
+
+                <span class="contact-value">
+                    <a href="#" target="_blank">
+                        LinkedIn ↗
+                    </a>
+                </span>
+
+            </div>
+
+
+            <div class="contact-row">
+
+                <span class="contact-label">
+                    GitHub
+                </span>
+
+                <span class="contact-value">
+                    <a href="#" target="_blank">
+                        GitHub ↗
+                    </a>
+                </span>
+
+            </div>
+
+
+            <div class="contact-row">
+
+                <span class="contact-label">
+                    Languages
+                </span>
+
+                <span class="contact-value">
+                    Arabic · French · English
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<div class="wrap">
+
+    <footer>
+
+        <span>
+            © 2026 MANAR AFLI
+        </span>
+
+        <span>
+            INDUSTRIAL IT &amp; AUTOMATION
+        </span>
+
+    </footer>
+
+</div>
+
 
 </main>
-
-<footer>© 2026 MANAR AFLI — BUILT WITH SIGNAL, STEEL &amp; STEP 7</footer>
 
 </body>
 </html>
