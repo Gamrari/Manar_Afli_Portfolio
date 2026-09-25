@@ -2,64 +2,176 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1415">
-  <title>Manar Afli | Engineering Portfolio</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manar Afli — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: #0b1415;
-      --surface: #111c1e;
-      --surface-hover: #172426;
-      --text: #f1f6f4;
-      --muted: #a4b3b1;
-      --soft: #738784;
+      --bg: #0c1516;
+      --panel: #142021;
+      --panel-hover: #1a2a2b;
+      --text: #f3f7f5;
+      --muted: #a7b7b3;
+      --subtle: #758985;
       --accent: #75cdbb;
-      --line: #29403e;
-      --page-width: 1180px;
+      --border: #2b4140;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      background: var(--background);
+      background: var(--bg);
       color: var(--text);
       font-family: "DM Sans", sans-serif;
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
-    img {
-      max-width: 100%;
-    }
-
-    ::selection {
-      background: var(--accent);
-      color: var(--background);
-    }
-
-    :focus-visible {
+    a:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
     }
 
-    .container {
-      width: min(var(--page-width), calc(100% - 48px));
-      margin-inline: auto;
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    /* THE MAIN LAYOUT: PROFILE LEFT, CONTENT RIGHT */
+
+    .page {
+      width: min(1320px, calc(100% - 64px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* LEFT PROFILE COLUMN */
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
+      padding: 48px 28px 40px 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .brand {
+      display: inline-block;
+      margin-bottom: 60px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-decoration: none;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .portrait {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 27px;
+      padding: 6px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+    }
+
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      border-radius: 50%;
+    }
+
+    .sidebar h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: -.05em;
+      line-height: 1.15;
+    }
+
+    .sidebar-role {
+      margin: 10px 0 0;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .sidebar-location {
+      margin: 17px 0 0;
+      color: var(--subtle);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 46px;
+      padding-top: 23px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 7px;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      transition: background .2s, color .2s;
+    }
+
+    .sidebar-nav a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .sidebar-nav span { color: var(--subtle); }
+
+    .sidebar-contact {
+      display: block;
+      margin-top: 34px;
+      padding: 12px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .sidebar-contact:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* RIGHT CONTENT COLUMN */
+
+    .content {
+      min-width: 0;
+      padding: 62px 0 38px;
     }
 
     .eyebrow {
@@ -67,453 +179,286 @@
       color: var(--accent);
       font-family: "IBM Plex Mono", monospace;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
-    /* NAVIGATION */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(11, 20, 21, 0.94);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(14px);
+    .intro {
+      padding-bottom: 72px;
     }
 
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-contact {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      align-items: center;
-      gap: clamp(48px, 8vw, 120px);
-      min-height: 630px;
-      padding-block: 90px 110px;
-    }
-
-    .portrait-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .portrait-frame {
-      width: 270px;
-      height: 270px;
-      padding: 8px;
-      border: 1px solid var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 0 18px rgba(117, 205, 187, 0.035);
-    }
-
-    .portrait-frame img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 40%;
-    }
-
-    .location {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 10px;
-      letter-spacing: 0.04em;
-    }
-
-    .location::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .hero-content {
+    .intro h2 {
       max-width: 760px;
+      margin: 17px 0 20px;
+      font-size: clamp(42px, 5.2vw, 68px);
+      line-height: 1.06;
+      letter-spacing: -.065em;
     }
 
-    .hero h1 {
-      margin: 20px 0 22px;
-      font-size: clamp(54px, 6.8vw, 92px);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
-    }
+    .intro h2 span { color: var(--accent); }
 
-    .hero h1 span {
-      color: var(--accent);
-    }
-
-    .hero-description {
-      max-width: 680px;
+    .intro-description {
+      max-width: 700px;
       margin: 0;
       color: var(--muted);
-      font-size: clamp(17px, 1.7vw, 20px);
+      font-size: 18px;
       line-height: 1.75;
     }
 
-    .hero-actions {
+    .intro-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
+      gap: 10px;
+      margin-top: 31px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 17px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+    .intro-links a {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
       color: var(--text);
       font-family: "IBM Plex Mono", monospace;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
       text-decoration: none;
       text-transform: uppercase;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
 
-    .button:hover {
+    .intro-links a:hover {
       border-color: var(--accent);
-      background: var(--surface-hover);
+      color: var(--accent);
     }
 
-    .button-primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--background);
-    }
-
-    .button-primary:hover {
-      background: #a4e4d7;
-      color: var(--background);
-    }
-
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 40px;
-      color: var(--soft);
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero-meta::before {
-      content: "";
-      width: 42px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    /* SHARED SECTION STYLES */
+    /* SECTIONS */
 
     .section {
-      padding-block: 92px;
-      border-top: 1px solid var(--line);
-      scroll-margin-top: 74px;
+      padding: 52px 0 62px;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 20px;
     }
 
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 36px;
+    .section-header {
+      margin-bottom: 27px;
     }
 
-    .section-heading h2 {
-      margin: 12px 0 0;
-      font-size: clamp(34px, 4.5vw, 54px);
-      line-height: 1.1;
-      letter-spacing: -0.045em;
+    .section-number {
+      margin: 0 0 9px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
 
-    .section-intro {
-      max-width: 360px;
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(30px, 3.5vw, 42px);
+      letter-spacing: -.045em;
+      line-height: 1.15;
+    }
+
+    .section-description {
+      max-width: 650px;
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+    }
+
+    .about-panel {
+      padding: 30px;
+    }
+
+    .about-panel p {
+      max-width: 750px;
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-      text-align: right;
+      font-size: 15px;
+      line-height: 1.85;
     }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-    }
+    .about-panel p + p { margin-top: 14px; }
 
-    /* ABOUT */
-
-    .about-grid {
+    .quick-facts {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.75fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 13px;
     }
 
-    .about-card {
-      padding: 36px;
-    }
+    .quick-fact { padding: 17px; }
 
-    .about-card h3 {
-      margin: 0 0 17px;
-      font-size: 26px;
-      line-height: 1.2;
-      letter-spacing: -0.035em;
-    }
-
-    .about-card p {
-      max-width: 690px;
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .about-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .fact-card {
-      padding: 25px 28px;
-    }
-
-    .fact {
-      padding: 17px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .fact:first-child {
-      padding-top: 0;
-    }
-
-    .fact:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .fact-label {
+    .quick-fact small {
       display: block;
-      margin-bottom: 5px;
-      color: var(--soft);
+      margin-bottom: 6px;
+      color: var(--subtle);
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .fact-value {
-      font-size: 14px;
-      font-weight: 600;
+    .quick-fact strong {
+      font-size: 13px;
+      line-height: 1.4;
     }
 
-    /* EXPERIENCE AND PROJECT CARDS */
+    /* EXPERIENCE */
 
-    .card-grid {
+    .experience-list {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 13px;
     }
 
-    .work-card,
-    .project-card {
-      padding: 30px;
-      transition: border-color 0.2s, transform 0.2s;
+    .experience-card {
+      display: grid;
+      grid-template-columns: 125px minmax(0, 1fr);
+      gap: 22px;
+      padding: 25px;
     }
 
-    .work-card:hover,
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .card-kicker {
-      margin: 0 0 19px;
+    .experience-date {
+      padding-top: 4px;
       color: var(--accent);
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
-      letter-spacing: 0.09em;
+      line-height: 1.6;
       text-transform: uppercase;
     }
 
-    .work-card h3,
+    .experience-card h3,
     .project-card h3 {
-      margin: 0 0 5px;
-      font-size: 23px;
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      margin: 0 0 4px;
+      font-size: 19px;
+      letter-spacing: -.025em;
+      line-height: 1.3;
     }
 
-    .organization {
-      margin: 0 0 20px;
+    .company {
+      margin: 0 0 13px;
       color: var(--accent);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
     }
 
-    .work-card ul {
+    .experience-card ul {
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 13px;
+      line-height: 1.75;
     }
 
-    .work-card li + li {
-      margin-top: 8px;
+    .experience-card li + li { margin-top: 5px; }
+
+    /* PROJECTS */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      padding: 23px;
+      transition: border-color .2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
     }
 
     .project-card p {
-      margin: 15px 0 22px;
+      margin: 9px 0 20px;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 13px;
+      line-height: 1.75;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 6px;
       margin-top: auto;
     }
 
     .tag {
-      padding: 5px 9px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
       color: var(--muted);
       font-family: "IBM Plex Mono", monospace;
-      font-size: 10px;
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
+      font-size: 9px;
     }
 
     /* SKILLS */
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
     }
 
-    .skill-card {
-      min-height: 165px;
-      padding: 26px;
-    }
+    .skill-card { padding: 22px; }
 
     .skill-card h3 {
-      margin: 0 0 10px;
-      font-size: 19px;
-      letter-spacing: -0.025em;
+      margin: 0 0 8px;
+      font-size: 16px;
     }
 
     .skill-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
-    /* AWARDS */
+    /* OTHER EXPERIENCE */
 
-    .extras-grid {
+    .extra-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 13px;
     }
 
-    .extras-card {
-      padding: 30px;
-    }
+    .extra-card { padding: 24px; }
 
-    .extras-card h3 {
-      margin: 0 0 22px;
+    .extra-card h3 {
+      margin: 0 0 14px;
       color: var(--accent);
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .extra-item {
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
+      padding: 15px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .extra-item h4 {
-      margin: 0 0 4px;
-      font-size: 15px;
-    }
-
-    .extra-date {
+    .extra-item strong {
       display: block;
-      margin-bottom: 8px;
-      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .extra-item small {
+      display: block;
+      margin: 5px 0;
+      color: var(--subtle);
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
     }
@@ -521,489 +466,347 @@
     .extra-item p {
       margin: 0;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.65;
     }
 
-    /* CONTACT */
+    /* CONTACT AND FOOTER */
 
-    .contact-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 35px;
-      padding: 42px;
-    }
+    .contact-panel { padding: 30px; }
 
-    .contact-card h2 {
-      margin: 12px 0;
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-    }
-
-    .contact-card p:not(.eyebrow) {
-      margin: 0;
+    .contact-panel p {
+      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    .contact-email {
+    .contact-panel a {
+      color: var(--accent);
+      font-size: clamp(17px, 2.6vw, 25px);
+      font-weight: 700;
       overflow-wrap: anywhere;
-      font-size: 17px;
-      font-weight: 600;
-      text-decoration-color: var(--accent);
       text-underline-offset: 5px;
     }
 
-    .contact-email:hover {
-      color: var(--accent);
-    }
-
     footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 32px;
-      border-top: 1px solid var(--line);
-      color: var(--soft);
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
 
-    /* TABLET */
+    /* SMALL SCREENS */
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 240px minmax(0, 1fr);
-        gap: 42px;
+    @media (max-width: 950px) {
+      .page {
+        width: min(100% - 40px, 760px);
+        display: block;
       }
 
-      .portrait-frame {
-        width: 220px;
-        height: 220px;
-      }
-
-      .hero h1 {
-        font-size: clamp(48px, 7vw, 74px);
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .fact-card {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 28px;
-      }
-
-      .fact:nth-last-child(2) {
-        border-bottom: 0;
-      }
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 650px) {
-      .container {
-        width: min(100% - 36px, var(--page-width));
-      }
-
-      .nav {
-        min-height: 65px;
-      }
-
-      .nav-links a:not(.nav-contact) {
-        display: none;
-      }
-
-      .nav-links {
-        gap: 0;
-      }
-
-      .hero {
+      .sidebar {
+        position: static;
         min-height: 0;
-        grid-template-columns: 1fr;
-        gap: 38px;
-        padding-block: 65px 75px;
+        padding: 24px 0 28px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
       }
 
-      .portrait-column {
-        align-items: flex-start;
+      .brand { margin-bottom: 25px; }
+
+      .sidebar-profile {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        align-items: center;
+        gap: 20px;
       }
 
-      .portrait-frame {
-        width: 190px;
-        height: 190px;
+      .portrait {
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        padding: 4px;
       }
 
-      .hero h1 {
-        font-size: clamp(52px, 12vw, 72px);
+      .sidebar h1 { font-size: 25px; }
+      .sidebar-role { margin-top: 4px; }
+      .sidebar-location { margin-top: 7px; }
+
+      .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 20px;
+        padding-top: 15px;
       }
 
-      .hero-description {
-        font-size: 16px;
+      .sidebar-nav a {
+        padding: 7px 9px;
       }
 
-      .hero-meta {
-        line-height: 1.6;
-      }
+      .sidebar-nav span { display: none; }
+      .sidebar-contact { display: none; }
+      .content { padding-top: 44px; }
+      .intro { padding-bottom: 50px; }
+    }
 
-      .section {
-        padding-block: 68px;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      .section-intro {
-        max-width: 100%;
-        margin-top: 14px;
-        text-align: left;
-      }
-
-      .about-card,
-      .work-card,
-      .project-card,
-      .extras-card {
-        padding: 24px;
-      }
-
-      .card-grid,
+    @media (max-width: 600px) {
+      .page { width: min(100% - 32px, 760px); }
+      .sidebar-nav { overflow-x: auto; flex-wrap: nowrap; }
+      .sidebar-nav a { white-space: nowrap; }
+      .intro h2 { font-size: 43px; }
+      .intro-description { font-size: 16px; }
+      .section { padding: 42px 0 52px; }
+      .quick-facts,
+      .project-grid,
       .skills-grid,
-      .extras-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .fact-card {
-        display: block;
-      }
-
-      .fact:nth-last-child(2) {
-        border-bottom: 1px solid var(--line);
-      }
-
-      .contact-card {
-        grid-template-columns: 1fr;
-        padding: 28px;
-      }
-
-      footer {
-        flex-direction: column;
-      }
+      .extra-grid { grid-template-columns: 1fr; }
+      .experience-card { grid-template-columns: 1fr; gap: 7px; }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Main navigation">
+  <div class="page">
+
+    <!-- LEFT COLUMN -->
+    <aside class="sidebar">
       <a class="brand" href="#top">MANAR<span>.</span>AFLI</a>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a class="nav-contact" href="#contact">Contact ↗</a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="top">
-    <div class="container">
-
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="portrait-column">
-          <div class="portrait-frame">
-            <img src="manar-photo.jpg" alt="Portrait of Manar Afli">
-          </div>
-          <span class="location">TUNIS, TUNISIA</span>
+      <div class="sidebar-profile">
+        <div class="portrait">
+          <img src="manar-photo.jpg" alt="Portrait of Manar Afli">
         </div>
 
-        <div class="hero-content">
-          <p class="eyebrow">Industrial IT & Automation · INSAT</p>
-          <h1 id="hero-title">Hi, I'm<br><span>Manar Afli.</span></h1>
-          <p class="hero-description">
-            I'm an engineering student interested in robotics, embedded systems,
-            and industrial automation. I build systems that connect software,
-            electronics, and the physical world.
-          </p>
+        <div>
+          <h1>Manar Afli</h1>
+          <p class="sidebar-role">Industrial IT & Automation Engineering Student</p>
+          <p class="sidebar-location">Tunis, Tunisia</p>
+        </div>
+      </div>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">Explore my work ↗</a>
-            <a class="button" href="#experience">Experience</a>
-            <a class="button" href="#contact">Get in touch</a>
-          </div>
+      <nav class="sidebar-nav" aria-label="Page sections">
+        <a href="#about">About <span>01</span></a>
+        <a href="#experience">Experience <span>02</span></a>
+        <a href="#projects">Projects <span>03</span></a>
+        <a href="#skills">Skills <span>04</span></a>
+        <a href="#more">More <span>05</span></a>
+        <a href="#contact">Contact <span>06</span></a>
+      </nav>
 
-          <div class="hero-meta">Final-year engineering student · Class of 2027</div>
+      <a class="sidebar-contact" href="mailto:manar.afli@insat.ucar.tn">Get in touch ↗</a>
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+    <main class="content" id="top">
+      <section class="intro">
+        <p class="eyebrow">Portfolio / Class of 2027</p>
+        <h2>Engineering ideas<br>into <span>working systems.</span></h2>
+        <p class="intro-description">
+          I'm an engineering student focused on robotics, embedded systems,
+          and industrial automation. My work connects software, electronics,
+          and the physical world.
+        </p>
+        <div class="intro-links">
+          <a href="#projects">View projects ↓</a>
+          <a href="#experience">Experience ↓</a>
+          <a href="#contact">Contact ↗</a>
         </div>
       </section>
 
       <section class="section" id="about">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">01 / About</p>
-            <h2>A little about me.</h2>
-          </div>
-          <p class="section-intro">Engineering across software, electronics, control, and real-world systems.</p>
+        <div class="section-header">
+          <p class="section-number">01 / About</p>
+          <h2>A little about me</h2>
         </div>
 
-        <div class="about-grid">
-          <div class="card about-card">
-            <h3>Building things that work in the real world.</h3>
-            <p>
-              I'm a final-year Industrial IT and Automation engineering student
-              at INSAT, with a focus on embedded systems, robotics, and control.
-            </p>
-            <p>
-              My work spans autonomous robotics, EEG signal processing,
-              PLC-based manufacturing systems, and control simulations.
-              I enjoy moving between software and physical systems to make
-              practical ideas work.
-            </p>
-          </div>
+        <div class="panel about-panel">
+          <p>
+            I'm a final-year Industrial IT and Automation engineering student
+            at INSAT. I'm interested in embedded systems, robotics, and control.
+          </p>
+          <p>
+            My projects span quadruped and autonomous robotics, EEG signal
+            processing, PLC-based manufacturing, and production simulations.
+            I enjoy solving practical problems across both software and hardware.
+          </p>
+        </div>
 
-          <div class="card fact-card">
-            <div class="fact">
-              <span class="fact-label">Institution</span>
-              <span class="fact-value">INSAT, Tunis</span>
-            </div>
-            <div class="fact">
-              <span class="fact-label">Program</span>
-              <span class="fact-value">Industrial IT & Automation</span>
-            </div>
-            <div class="fact">
-              <span class="fact-label">Focus</span>
-              <span class="fact-value">Robotics & Embedded Systems</span>
-            </div>
-            <div class="fact">
-              <span class="fact-label">Languages</span>
-              <span class="fact-value">Arabic · French · English</span>
-            </div>
+        <div class="quick-facts">
+          <div class="panel quick-fact">
+            <small>Institution</small>
+            <strong>INSAT, Tunis</strong>
+          </div>
+          <div class="panel quick-fact">
+            <small>Program</small>
+            <strong>Industrial IT & Automation</strong>
+          </div>
+          <div class="panel quick-fact">
+            <small>Languages</small>
+            <strong>Arabic · French · English</strong>
           </div>
         </div>
       </section>
 
       <section class="section" id="experience">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">02 / Experience</p>
-            <h2>Where I've worked.</h2>
-          </div>
-          <p class="section-intro">Technical work in robotics and industrial automation.</p>
+        <div class="section-header">
+          <p class="section-number">02 / Experience</p>
+          <h2>Where I've worked</h2>
+          <p class="section-description">Technical experience in robotics and industrial automation.</p>
         </div>
 
-        <div class="card-grid">
-          <article class="card work-card">
-            <p class="card-kicker">Jul 2026 – Aug 2026 · Internship</p>
-            <h3>Technical Project Manager Intern</h3>
-            <p class="organization">CyberMech Systems · Tunisia</p>
-            <ul>
-              <li>Worked on an autonomous mobile robotics platform and its development workflows.</li>
-              <li>Managed the GitHub repository and documentation infrastructure using MkDocs.</li>
-              <li>Worked with ROS 2 packages, custom interfaces, Gazebo simulation, and RGB camera integration.</li>
-            </ul>
+        <div class="experience-list">
+          <article class="panel experience-card">
+            <div class="experience-date">Jul – Aug<br>2026</div>
+            <div>
+              <h3>Technical Project Manager Intern</h3>
+              <p class="company">CyberMech Systems · Tunisia</p>
+              <ul>
+                <li>Worked on an autonomous mobile robotics platform and its documentation.</li>
+                <li>Managed its GitHub repository and MkDocs documentation workflow.</li>
+                <li>Worked with ROS 2 packages, Gazebo simulation, and RGB camera integration.</li>
+              </ul>
+            </div>
           </article>
 
-          <article class="card work-card">
-            <p class="card-kicker">Jul 2025 · Internship</p>
-            <h3>Industrial Automation Intern</h3>
-            <p class="organization">AS2E Automation · Tunisia</p>
-            <ul>
-              <li>Programmed industrial control systems using TIA Portal and STEP 7.</li>
-              <li>Worked with ladder logic and real-time control sequences for automated machinery.</li>
-              <li>Analyzed electrical schematics and researched functional safety according to IEC 62061.</li>
-            </ul>
+          <article class="panel experience-card">
+            <div class="experience-date">Jul<br>2025</div>
+            <div>
+              <h3>Industrial Automation Intern</h3>
+              <p class="company">AS2E Automation · Tunisia</p>
+              <ul>
+                <li>Programmed control systems using TIA Portal and STEP 7.</li>
+                <li>Worked with ladder logic and real-time machinery control sequences.</li>
+                <li>Analyzed electrical schematics and researched IEC 62061 functional safety.</li>
+              </ul>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section" id="projects">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">03 / Projects</p>
-            <h2>Things I've built.</h2>
-          </div>
-          <p class="section-intro">Selected projects across robotics, automation, signal processing, and AI.</p>
+        <div class="section-header">
+          <p class="section-number">03 / Selected work</p>
+          <h2>Projects</h2>
+          <p class="section-description">A quick look at what I've designed, built, and studied.</p>
         </div>
 
-        <div class="card-grid">
-          <article class="card project-card">
-            <p class="card-kicker">01 · May 2026</p>
+        <div class="project-grid">
+          <article class="panel project-card">
+            <div class="project-top"><span>01 / Robotics</span><span>2026</span></div>
             <h3>Quadruped Spider Robot</h3>
-            <p>A Wi-Fi controlled quadruped robot for real-time corrosion inspection. It uses 12 servo motors, creep and wave gaits, and an ESP32-based control architecture.</p>
-            <div class="tags">
-              <span class="tag">ESP32</span><span class="tag">12 DOF</span>
-              <span class="tag">Servo control</span><span class="tag">Robotics</span>
-            </div>
+            <p>Wi-Fi controlled quadruped for corrosion inspection, with 12 servo motors, creep and wave gaits, and ESP32 control.</p>
+            <div class="tags"><span class="tag">ESP32</span><span class="tag">12 DOF</span><span class="tag">Servo control</span></div>
           </article>
 
-          <article class="card project-card">
-            <p class="card-kicker">02 · 2026</p>
+          <article class="panel project-card">
+            <div class="project-top"><span>02 / Signal processing</span><span>2026</span></div>
             <h3>EEG Motor Imagery Classification</h3>
-            <p>An EEG signal processing project for motor imagery classification. Built a CSP + LDA pipeline and explored CNN classification across multiple subjects.</p>
-            <div class="tags">
-              <span class="tag">EEG</span><span class="tag">MNE</span>
-              <span class="tag">CSP</span><span class="tag">LDA</span>
-            </div>
+            <p>Motor imagery classification using an EEG processing pipeline with CSP + LDA and experiments with CNN models.</p>
+            <div class="tags"><span class="tag">EEG</span><span class="tag">MNE</span><span class="tag">CSP</span><span class="tag">LDA</span></div>
           </article>
 
-          <article class="card project-card">
-            <p class="card-kicker">03 · 2026</p>
+          <article class="panel project-card">
+            <div class="project-top"><span>03 / Machine learning</span><span>2026</span></div>
             <h3>Hyperspectral Image Classification</h3>
-            <p>A supervised classification project using the Salinas hyperspectral dataset, covering agricultural classes and spectral bands.</p>
-            <div class="tags">
-              <span class="tag">CNN</span><span class="tag">Hyperspectral</span>
-              <span class="tag">TensorFlow</span>
-            </div>
+            <p>Supervised classification using the Salinas hyperspectral dataset and its agricultural classes.</p>
+            <div class="tags"><span class="tag">CNN</span><span class="tag">TensorFlow</span><span class="tag">Imaging</span></div>
           </article>
 
-          <article class="card project-card">
-            <p class="card-kicker">04 · 2025</p>
+          <article class="panel project-card">
+            <div class="project-top"><span>04 / AI</span><span>2025</span></div>
             <h3>AI-Optimized Beamforming</h3>
-            <p>A beamforming prediction project using a feedforward neural network optimized with the Coyote Optimization Algorithm, with experiments in synthetic channel-data generation.</p>
-            <div class="tags">
-              <span class="tag">MATLAB</span><span class="tag">FFNN</span>
-              <span class="tag">GAN</span>
-            </div>
+            <p>Beamforming prediction with a feedforward neural network and the Coyote Optimization Algorithm.</p>
+            <div class="tags"><span class="tag">MATLAB</span><span class="tag">FFNN</span><span class="tag">GAN</span></div>
           </article>
 
-          <article class="card project-card">
-            <p class="card-kicker">05 · 2026</p>
+          <article class="panel project-card">
+            <div class="project-top"><span>05 / Simulation</span><span>2026</span></div>
             <h3>Production Workflow Simulation</h3>
-            <p>A discrete-event production-line simulation with breakdowns, material delays, and KPI monitoring to explore workflow performance.</p>
-            <div class="tags">
-              <span class="tag">AnyLogic</span><span class="tag">Simulation</span>
-              <span class="tag">KPI</span>
-            </div>
+            <p>Discrete-event production-line simulation with breakdowns, material delays, and KPI monitoring.</p>
+            <div class="tags"><span class="tag">AnyLogic</span><span class="tag">Simulation</span><span class="tag">KPI</span></div>
           </article>
 
-          <article class="card project-card">
-            <p class="card-kicker">06 · 2025</p>
+          <article class="panel project-card">
+            <div class="project-top"><span>06 / Automation</span><span>2025</span></div>
             <h3>Manufacturing Automation System</h3>
-            <p>A factory automation project combining an S7-1500 PLC, GRAFCET and ladder logic, a dual-screen Simatic HMI, and a Factory I/O production line.</p>
-            <div class="tags">
-              <span class="tag">S7-1500</span><span class="tag">GRAFCET</span>
-              <span class="tag">HMI</span><span class="tag">Factory I/O</span>
-            </div>
+            <p>Factory automation using an S7-1500 PLC, GRAFCET, ladder logic, Simatic HMI, and Factory I/O.</p>
+            <div class="tags"><span class="tag">S7-1500</span><span class="tag">HMI</span><span class="tag">Factory I/O</span></div>
           </article>
         </div>
       </section>
 
       <section class="section" id="skills">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">04 / Skills</p>
-            <h2>Tools I use.</h2>
-          </div>
-          <p class="section-intro">A practical toolkit for building and testing technical systems.</p>
+        <div class="section-header">
+          <p class="section-number">04 / Capabilities</p>
+          <h2>Skills & tools</h2>
         </div>
 
         <div class="skills-grid">
-          <div class="card skill-card">
-            <h3>Programming</h3>
-            <p>C++ · Python · MATLAB · C · Java</p>
-          </div>
-          <div class="card skill-card">
-            <h3>Embedded systems</h3>
-            <p>STM32 · ESP32 · Arduino · FreeRTOS · Embedded Linux</p>
-          </div>
-          <div class="card skill-card">
-            <h3>Robotics</h3>
-            <p>ROS 2 · Gazebo · Motor control · Servo control · CAD</p>
-          </div>
-          <div class="card skill-card">
-            <h3>Industrial automation</h3>
-            <p>TIA Portal · STEP 7 · GRAFCET · PLC · Factory I/O · HMI</p>
-          </div>
-          <div class="card skill-card">
-            <h3>Signal processing</h3>
-            <p>EEG · MNE-Python · CSP · LDA</p>
-          </div>
-          <div class="card skill-card">
-            <h3>Development tools</h3>
-            <p>Git · GitHub · SolidWorks · MkDocs</p>
-          </div>
+          <div class="panel skill-card"><h3>Programming</h3><p>C++ · Python · MATLAB · C · Java</p></div>
+          <div class="panel skill-card"><h3>Embedded systems</h3><p>STM32 · ESP32 · Arduino · FreeRTOS · Embedded Linux</p></div>
+          <div class="panel skill-card"><h3>Robotics</h3><p>ROS 2 · Gazebo · Motor control · Servo control · CAD</p></div>
+          <div class="panel skill-card"><h3>Industrial automation</h3><p>TIA Portal · STEP 7 · GRAFCET · PLC · Factory I/O · HMI</p></div>
+          <div class="panel skill-card"><h3>Signal processing</h3><p>EEG · MNE-Python · CSP · LDA</p></div>
+          <div class="panel skill-card"><h3>Development tools</h3><p>Git · GitHub · SolidWorks · MkDocs</p></div>
         </div>
       </section>
 
       <section class="section" id="more">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">05 / Beyond engineering</p>
-            <h2>More than projects.</h2>
-          </div>
+        <div class="section-header">
+          <p class="section-number">05 / Beyond engineering</p>
+          <h2>More about me</h2>
         </div>
 
-        <div class="extras-grid">
-          <div class="card extras-card">
+        <div class="extra-grid">
+          <div class="panel extra-card">
             <h3>Awards & distinctions</h3>
-
             <div class="extra-item">
-              <h4>IEEE RAS Robotics Competition — Robocraft</h4>
-              <span class="extra-date">Tunis · February 2024</span>
-              <p>Built an Arduino-based motor control system and tuned PID algorithms for autonomous obstacle detection.</p>
+              <strong>IEEE RAS Robotics Competition — Robocraft</strong>
+              <small>Tunis · February 2024</small>
+              <p>Built an Arduino motor control system and tuned PID algorithms for obstacle detection.</p>
             </div>
-
             <div class="extra-item">
-              <h4>IEEE TSYP 13.0 — IAS Challenge · Finalist</h4>
-              <span class="extra-date">Hammamet · 2024</span>
-              <p>Worked on Industry 4.0 readiness assessment using the SIRI framework and ISA-95 standard.</p>
+              <strong>IEEE TSYP 13.0 — IAS Challenge · Finalist</strong>
+              <small>Hammamet · 2024</small>
+              <p>Worked on Industry 4.0 readiness using the SIRI framework and ISA-95.</p>
             </div>
-
             <div class="extra-item">
-              <h4>IEEE IASTAM 4.0 Annual Meeting · Finalist</h4>
-              <span class="extra-date">Sousse · 2024</span>
-              <p>Researched digital-twin methodologies for connecting virtual simulation with real manufacturing systems.</p>
+              <strong>IEEE IASTAM 4.0 Annual Meeting · Finalist</strong>
+              <small>Sousse · 2024</small>
+              <p>Researched digital-twin approaches for manufacturing systems.</p>
             </div>
           </div>
 
-          <div class="card extras-card">
+          <div class="panel extra-card">
             <h3>Leadership & engagement</h3>
-
             <div class="extra-item">
-              <h4>IEEE Region 8 — Student & Young Professionals</h4>
-              <span class="extra-date">2024–2025</span>
-              <p>Contributed to international activities and collaborated with student teams across IEEE Region 8.</p>
+              <strong>IEEE Region 8 — Student & Young Professionals</strong>
+              <small>2024–2025</small>
+              <p>Contributed to international activities with student teams across the region.</p>
             </div>
-
             <div class="extra-item">
-              <h4>Workshop Coordinator — Aerobotix Club</h4>
-              <span class="extra-date">March 2025</span>
-              <p>Led robotics and 3D-design workshops for students aged 10–18, including aircraft modelling sessions.</p>
+              <strong>Workshop Coordinator — Aerobotix Club</strong>
+              <small>March 2025</small>
+              <p>Led robotics and 3D-design workshops for students aged 10–18.</p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="contact">
-        <div class="card contact-card">
-          <div>
-            <p class="eyebrow">06 / Contact</p>
-            <h2>Let's talk engineering.</h2>
-            <p>Interested in robotics, embedded systems, and industrial automation opportunities.</p>
-          </div>
-          <a class="contact-email" href="mailto:manar.afli@insat.ucar.tn">
-            manar.afli@insat.ucar.tn ↗
-          </a>
+        <div class="section-header">
+          <p class="section-number">06 / Contact</p>
+          <h2>Let's connect</h2>
+        </div>
+        <div class="panel contact-panel">
+          <p>Interested in opportunities involving robotics, embedded systems, and industrial automation.</p>
+          <a href="mailto:manar.afli@insat.ucar.tn">manar.afli@insat.ucar.tn ↗</a>
         </div>
       </section>
 
-      <footer>
-        <span>© 2026 Manar Afli</span>
-        <span>Industrial IT & Automation</span>
-      </footer>
-
-    </div>
-  </main>
+      <footer>© 2026 MANAR AFLI · INDUSTRIAL IT & AUTOMATION</footer>
+    </main>
+  </div>
 </body>
 </html>
