@@ -10,14 +10,18 @@
 
   <style>
     :root {
-      --bg: #0c1516;
-      --panel: #142021;
-      --panel-hover: #1a2a2b;
-      --text: #f3f7f5;
-      --muted: #a7b7b3;
-      --subtle: #758985;
-      --accent: #75cdbb;
-      --border: #2b4140;
+      --bg: #1f1029;
+      --sidebar: #261531;
+      --panel: #30203d;
+      --panel-hover: #3b294b;
+      --text: #faf6fd;
+      --muted: #dfd2e8;
+      --subtle: #baa6c8;
+      --accent: #ead5f5;
+      --border: #604b70;
+      --pastel: #f0e7f6;
+      --pastel-deep: #e7d8f0;
+      --pastel-text: #493653;
     }
 
     * { box-sizing: border-box; }
@@ -43,7 +47,7 @@
       font-family: "IBM Plex Mono", monospace;
     }
 
-    /* THE MAIN LAYOUT: PROFILE LEFT, CONTENT RIGHT */
+    /* MAIN LAYOUT */
 
     .page {
       width: min(1320px, calc(100% - 64px));
@@ -61,6 +65,7 @@
       top: 0;
       min-height: 100vh;
       padding: 48px 28px 40px 0;
+      background: var(--sidebar);
       border-right: 1px solid var(--border);
     }
 
@@ -141,7 +146,7 @@
     }
 
     .sidebar-nav a:hover {
-      background: var(--panel);
+      background: var(--panel-hover);
       color: var(--accent);
     }
 
@@ -227,6 +232,7 @@
     .intro-links a:hover {
       border-color: var(--accent);
       color: var(--accent);
+      background: var(--panel-hover);
     }
 
     /* SECTIONS */
@@ -270,14 +276,19 @@
       border-radius: 13px;
     }
 
+    /* ABOUT */
+
     .about-panel {
       padding: 30px;
+      background: var(--pastel);
+      border-color: var(--pastel);
+      color: var(--bg);
     }
 
     .about-panel p {
       max-width: 750px;
       margin: 0;
-      color: var(--muted);
+      color: var(--pastel-text);
       font-size: 15px;
       line-height: 1.85;
     }
@@ -293,6 +304,12 @@
 
     .quick-fact { padding: 17px; }
 
+    .quick-fact:first-child {
+      background: var(--pastel-deep);
+      border-color: var(--pastel-deep);
+      color: var(--bg);
+    }
+
     .quick-fact small {
       display: block;
       margin-bottom: 6px;
@@ -300,6 +317,10 @@
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
       text-transform: uppercase;
+    }
+
+    .quick-fact:first-child small {
+      color: #674c76;
     }
 
     .quick-fact strong {
@@ -367,11 +388,12 @@
       display: flex;
       flex-direction: column;
       padding: 23px;
-      transition: border-color .2s;
+      transition: border-color .2s, background .2s;
     }
 
     .project-card:hover {
       border-color: var(--accent);
+      background: var(--panel-hover);
     }
 
     .project-top {
@@ -429,7 +451,7 @@
       line-height: 1.7;
     }
 
-    /* OTHER EXPERIENCE */
+    /* AWARDS AND LEADERSHIP */
 
     .extra-grid {
       display: grid;
@@ -470,18 +492,23 @@
       line-height: 1.65;
     }
 
-    /* CONTACT AND FOOTER */
+    /* CONTACT */
 
-    .contact-panel { padding: 30px; }
+    .contact-panel {
+      padding: 30px;
+      background: var(--pastel);
+      border-color: var(--pastel);
+      color: var(--bg);
+    }
 
     .contact-panel p {
       margin: 0 0 18px;
-      color: var(--muted);
+      color: var(--pastel-text);
       font-size: 14px;
     }
 
     .contact-panel a {
-      color: var(--accent);
+      color: #56316c;
       font-size: clamp(17px, 2.6vw, 25px);
       font-weight: 700;
       overflow-wrap: anywhere;
@@ -496,7 +523,7 @@
       font-size: 10px;
     }
 
-    /* SMALL SCREENS */
+    /* TABLET */
 
     @media (max-width: 950px) {
       .page {
@@ -540,15 +567,14 @@
         padding-top: 15px;
       }
 
-      .sidebar-nav a {
-        padding: 7px 9px;
-      }
-
+      .sidebar-nav a { padding: 7px 9px; }
       .sidebar-nav span { display: none; }
       .sidebar-contact { display: none; }
       .content { padding-top: 44px; }
       .intro { padding-bottom: 50px; }
     }
+
+    /* MOBILE */
 
     @media (max-width: 600px) {
       .page { width: min(100% - 32px, 760px); }
@@ -557,11 +583,18 @@
       .intro h2 { font-size: 43px; }
       .intro-description { font-size: 16px; }
       .section { padding: 42px 0 52px; }
+
       .quick-facts,
       .project-grid,
       .skills-grid,
-      .extra-grid { grid-template-columns: 1fr; }
-      .experience-card { grid-template-columns: 1fr; gap: 7px; }
+      .extra-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-card {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
     }
   </style>
 </head>
@@ -569,7 +602,6 @@
 <body>
   <div class="page">
 
-    <!-- LEFT COLUMN -->
     <aside class="sidebar">
       <a class="brand" href="#top">MANAR<span>.</span>AFLI</a>
 
@@ -597,7 +629,6 @@
       <a class="sidebar-contact" href="mailto:manar.afli@insat.ucar.tn">Get in touch ↗</a>
     </aside>
 
-    <!-- RIGHT COLUMN -->
     <main class="content" id="top">
       <section class="intro">
         <p class="eyebrow">Portfolio / Class of 2027</p>
