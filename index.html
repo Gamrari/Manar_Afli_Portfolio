@@ -59,9 +59,13 @@
     /* NAVIGATION */
 
     .site-header {
-      position: relative;
-      z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(31, 16, 41, .96);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .nav {
@@ -182,8 +186,8 @@
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(52px, 6vw, 95px);
-      line-height: 1.04;
+      font-size: clamp(45px, 5.5vw, 82px);
+      line-height: 1.07;
       letter-spacing: -.075em;
     }
 
@@ -235,7 +239,7 @@
     .section {
       padding-block: 105px;
       border-bottom: 1px solid var(--border);
-      scroll-margin-top: 25px;
+      scroll-margin-top: 105px;
     }
 
     .section-heading {
@@ -676,9 +680,7 @@
       color: var(--dark);
     }
 
-    .contact-link.primary:hover {
-      background: var(--lavender);
-    }
+    .contact-link.primary:hover { background: var(--lavender); }
 
     footer {
       display: flex;
@@ -731,6 +733,7 @@
       .logo { margin-right: auto; }
       .nav-contact { margin-left: auto; }
       .nav-links { order: 3; width: 100%; }
+      .section { scroll-margin-top: 150px; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -949,10 +952,14 @@
 
       <div class="hero-copy">
         <p class="eyebrow">Hello, I'm Manar Afli ✿</p>
-        <h1>Building ideas into <em>working systems.</em></h1>
+
+        <h1>Looking for my <em>end-of-studies internship.</em></h1>
+
         <p class="hero-description">
-          Industrial IT and Automation engineering student exploring robotics,
-          embedded systems, and intelligent industrial solutions.
+          I'm a final-year Industrial IT and Automation engineering student
+          seeking a six-month end-of-studies internship starting in February
+          2027. I'm particularly interested in robotics, embedded systems,
+          and industrial automation.
         </p>
 
         <div class="hero-actions">
