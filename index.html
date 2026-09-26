@@ -459,24 +459,6 @@
       line-height: 1.7;
     }
 
-    .project-images {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
-      margin: 0 0 19px;
-    }
-
-    .project-images img {
-      display: block;
-      width: 100%;
-      height: 125px;
-      object-fit: contain;
-      padding: 6px;
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      background: var(--surface-light);
-    }
-
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -643,9 +625,19 @@
       font-size: 36px;
     }
 
+    .contact-panel h3 {
+      max-width: 840px;
+      margin: 0 0 14px;
+      font-size: clamp(35px, 5vw, 66px);
+      line-height: 1.12;
+      letter-spacing: -.065em;
+    }
+
+    .contact-panel h3 span { color: var(--lavender); }
+
     .contact-panel p {
-      max-width: 620px;
-      margin: 0 0 19px;
+      max-width: 700px;
+      margin: 0 0 25px;
       color: var(--muted);
       font-size: 16px;
     }
@@ -657,48 +649,63 @@
       gap: 12px;
     }
 
-    .contact-email {
-      color: var(--pastel);
-      font-size: clamp(18px, 3vw, 30px);
-      font-weight: 800;
-      overflow-wrap: anywhere;
-      text-underline-offset: 6px;
-    }
-
-    .linkedin-link {
+    .contact-link {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      min-height: 43px;
-      padding: 9px 15px;
-      border: 1px solid var(--lavender);
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 17px;
+      border: 1px solid var(--border);
       border-radius: 999px;
       color: var(--pastel);
       font-size: 13px;
       font-weight: 700;
       text-decoration: none;
-      white-space: nowrap;
+      overflow-wrap: anywhere;
+      transition: background .2s, color .2s;
     }
 
-    .linkedin-link:hover {
+    .contact-link:hover {
       background: var(--pastel);
       color: var(--dark);
     }
 
-    .linkedin-link svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
+    .contact-link.primary {
+      border-color: var(--pastel);
+      background: var(--pastel);
+      color: var(--dark);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--lavender);
     }
 
     footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
       padding-block: 28px 40px;
       color: var(--subtle);
       font-family: "IBM Plex Mono", monospace;
       font-size: 10px;
-      text-align: center;
       text-transform: uppercase;
       letter-spacing: .08em;
+    }
+
+    .back-to-top {
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--pastel);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .back-to-top:hover {
+      background: var(--pastel);
+      color: var(--dark);
     }
 
     /* RESPONSIVE */
@@ -767,7 +774,6 @@
       .skill-badge { height: 70px; }
       .facts { grid-template-columns: 1fr; }
       .experience-images img { height: 85px; }
-      .project-images img { height: 105px; }
     }
   </style>
 </head>
@@ -973,16 +979,21 @@
         </div>
 
         <div class="about-copy">
-          <h3>Curious about the space between software and the physical world.</h3>
+          <h3>I enjoy making software work in the real world.</h3>
+
           <p>
             I'm a final-year Industrial IT and Automation engineering student
-            at INSAT in Tunis. I'm especially interested in embedded systems,
-            robotics, and control.
+            at INSAT in Tunis. I'm drawn to robotics because it brings together
+            mechanics, electronics, software, and control to solve practical
+            problems.
           </p>
+
           <p>
-            My work spans quadruped robots, EEG signal processing, PLC-based
-            manufacturing, and production simulations. I enjoy turning
-            technical ideas into useful systems that actually work.
+            That interest has led me into embedded systems, where I work with
+            microcontrollers, sensors, and motor control, as well as industrial
+            automation, where reliable control logic keeps machines and
+            production processes running. I like following a system from its
+            first design through implementation, testing, and improvement.
           </p>
 
           <div class="facts">
@@ -1023,9 +1034,10 @@
           <p class="company">CyberMech Systems · Tunisia</p>
 
           <ul>
-            <li>Worked on an autonomous mobile robotics platform and its documentation.</li>
-            <li>Managed the project's GitHub repository and MkDocs workflow.</li>
-            <li>Worked with ROS 2 packages, Gazebo simulation, and RGB camera integration.</li>
+            <li>Structured ROS 2 packages and custom interfaces for an autonomous mobile robot inspection module.</li>
+            <li>Set up a Gazebo simulation with an RGB camera and TF2 coordinate transformations.</li>
+            <li>Developed an OpenCV inspection pipeline for defect detection using RGB, thermal, and gas sensor data.</li>
+            <li>Organized the team's GitHub workflow and MkDocs documentation to make development easier to reproduce.</li>
           </ul>
 
           <div class="experience-images">
@@ -1048,9 +1060,9 @@
           <p class="company">AS2E Automation · Tunisia</p>
 
           <ul>
-            <li>Programmed control systems using TIA Portal and STEP 7.</li>
-            <li>Worked with ladder logic and machinery control sequences.</li>
-            <li>Analyzed electrical schematics and researched IEC 62061 functional safety.</li>
+            <li>Programmed industrial control systems in TIA Portal and STEP 7, using ladder logic to develop real-time machinery sequences.</li>
+            <li>Analyzed electrical schematics and circuits to understand and validate control system designs.</li>
+            <li>Researched IEC 62061 functional safety requirements for automated machinery.</li>
           </ul>
         </article>
       </div>
@@ -1068,63 +1080,109 @@
         <article class="panel project-card">
           <div class="project-top"><span>01 / Robotics</span><span>2026</span></div>
           <h3>Quadruped Spider Robot</h3>
-
-          
-
           <p>
-            Wi-Fi controlled quadruped for corrosion inspection, with 12 servo
-            motors, creep and wave gaits, and ESP32 control.
+            Designed a Wi-Fi controlled quadruped for real-time corrosion
+            inspection. Selected its electronic components under budget
+            constraints, developed and tested a creep or wave gait for
+            12 servo motors, and moved motor control to a Pololu Maestro
+            12-channel controller for better precision. Built an ESP32
+            access point and browser interface for remote commands.
           </p>
-
           <div class="tags">
             <span class="tag">ESP32</span>
-            <span class="tag">12 DOF</span>
+            <span class="tag">Pololu Maestro</span>
             <span class="tag">Servo control</span>
+            <span class="tag">Gait algorithms</span>
           </div>
         </article>
 
         <article class="panel project-card">
           <div class="project-top"><span>02 / Signal processing</span><span>2026</span></div>
           <h3>EEG Motor Imagery Classification</h3>
-          <p>Motor imagery classification using an EEG processing pipeline with CSP and LDA, plus experiments with CNN models.</p>
+          <p>
+            Built a multi-subject EEG classification pipeline for
+            brain-computer interface applications. Processed raw EDF
+            recordings, removed artifacts, and extracted features using
+            Common Spatial Patterns and Linear Discriminant Analysis.
+            Also explored CNN classification and evaluated results with
+            cross-validation, confusion matrices, and per-subject analysis.
+          </p>
           <div class="tags">
-            <span class="tag">EEG</span><span class="tag">MNE</span><span class="tag">CSP</span><span class="tag">LDA</span>
+            <span class="tag">Python</span>
+            <span class="tag">MNE-Python</span>
+            <span class="tag">CSP + LDA</span>
+            <span class="tag">CNN</span>
           </div>
         </article>
 
         <article class="panel project-card">
           <div class="project-top"><span>03 / Machine learning</span><span>2026</span></div>
           <h3>Hyperspectral Image Classification</h3>
-          <p>Supervised classification using the Salinas hyperspectral dataset and its agricultural classes.</p>
+          <p>
+            Designed a supervised CNN to classify the 16 agricultural
+            classes in the Salinas hyperspectral dataset. Combined
+            spatial and spectral information from its 224 bands, used
+            class-balanced training, and assessed class-wise performance.
+            The model achieved 95.78% classification accuracy.
+          </p>
           <div class="tags">
-            <span class="tag">CNN</span><span class="tag">TensorFlow</span><span class="tag">Imaging</span>
+            <span class="tag">CNN</span>
+            <span class="tag">TensorFlow/Keras</span>
+            <span class="tag">Spectral features</span>
           </div>
         </article>
 
         <article class="panel project-card">
           <div class="project-top"><span>04 / AI</span><span>2025</span></div>
           <h3>AI-Optimized Beamforming</h3>
-          <p>Beamforming prediction with a feedforward neural network and the Coyote Optimization Algorithm.</p>
+          <p>
+            Developed a feedforward neural network to predict antenna
+            beamforming patterns. Used the Coyote Optimization Algorithm
+            to explore network architectures and tune neuron
+            configurations, and experimented with a conditional GAN
+            for synthetic channel data generation and modeling.
+          </p>
           <div class="tags">
-            <span class="tag">MATLAB</span><span class="tag">FFNN</span><span class="tag">GAN</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">FFNN</span>
+            <span class="tag">Coyote Optimization</span>
+            <span class="tag">Conditional GAN</span>
           </div>
         </article>
 
         <article class="panel project-card">
           <div class="project-top"><span>05 / Simulation</span><span>2026</span></div>
           <h3>Production Workflow Simulation</h3>
-          <p>Discrete-event production-line simulation with breakdowns, material delays, and KPI monitoring.</p>
+          <p>
+            Modeled a production system with 21 agents in AnyLogic.
+            Connected Excel inputs and tracked real-time KPIs while
+            simulating machine breakdowns and raw-material delays.
+            Tested decision strategies under normal and disrupted
+            conditions, reducing makespan from 271.96 to 222.96 seconds.
+          </p>
           <div class="tags">
-            <span class="tag">AnyLogic</span><span class="tag">Simulation</span><span class="tag">KPI</span>
+            <span class="tag">AnyLogic</span>
+            <span class="tag">Excel integration</span>
+            <span class="tag">Discrete-event simulation</span>
+            <span class="tag">KPI analysis</span>
           </div>
         </article>
 
         <article class="panel project-card">
           <div class="project-top"><span>06 / Automation</span><span>2025</span></div>
           <h3>Manufacturing Automation System</h3>
-          <p>Factory automation using an S7-1500 PLC, GRAFCET, ladder logic, Simatic HMI, and Factory I/O.</p>
+          <p>
+            Programmed an S7-1500 PLC using GRAFCET and ladder logic,
+            and designed a virtual production line in Factory I/O
+            with conveyors, workstations, and material handling.
+            Built a dual-screen Simatic HMI, mapped PLC I/O tags,
+            and validated the automated control sequences in simulation.
+          </p>
           <div class="tags">
-            <span class="tag">S7-1500</span><span class="tag">HMI</span><span class="tag">Factory I/O</span>
+            <span class="tag">S7-1500 PLC</span>
+            <span class="tag">TIA Portal</span>
+            <span class="tag">Factory I/O</span>
+            <span class="tag">Simatic HMI</span>
           </div>
         </article>
       </div>
@@ -1271,28 +1329,40 @@
 
       <div class="panel contact-panel">
         <span class="flower" aria-hidden="true">✿</span>
-        <p>Interested in opportunities involving robotics, embedded systems, and industrial automation.</p>
+
+        <h3>Let's talk <span>internships.</span></h3>
+        <p>
+          I'm interested in end-of-studies internships where I can contribute
+          to robotics, embedded systems, or industrial automation.
+          Get in touch to discuss an opportunity or request my CV.
+        </p>
 
         <div class="contact-links">
-          <a class="contact-email"
-             href="mailto:manar.afli@insat.ucar.tn">manar.afli@insat.ucar.tn ↗</a>
+          <a class="contact-link primary"
+             href="mailto:manar.afli@insat.ucar.tn">✉ &nbsp; manar.afli@insat.ucar.tn</a>
 
-          <a class="linkedin-link"
+          <a class="contact-link"
+             href="mailto:manar.afli@insat.ucar.tn?subject=CV%20request%20%E2%80%94%20Manar%20Afli">▤ &nbsp; Ask for my CV</a>
+
+          <a class="contact-link"
              href="https://www.linkedin.com/in/afli-manar-4669242b2/"
              target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Manar Afli on LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20.45 2H3.55A1.55 1.55 0 0 0 2 3.55v16.9A1.55 1.55 0 0 0 3.55 22h16.9A1.55 1.55 0 0 0 22 20.45V3.55A1.55 1.55 0 0 0 20.45 2ZM8 18.75H5.25V9.5H8v9.25ZM6.62 8.25a1.59 1.59 0 1 1 0-3.18 1.59 1.59 0 0 1 0 3.18Zm12.13 10.5H16V14.2c0-1.08-.02-2.47-1.5-2.47-1.51 0-1.74 1.18-1.74 2.39v4.63H10V9.5h2.64v1.26h.04c.37-.7 1.27-1.5 2.61-1.5 2.79 0 3.46 1.84 3.46 4.23v5.26Z"/>
-            </svg>
-            LinkedIn ↗
-          </a>
+             rel="noopener noreferrer">LinkedIn ↗</a>
+
+          <a class="contact-link"
+             href="https://github.com/Gamrari"
+             target="_blank"
+             rel="noopener noreferrer">GitHub ↗</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="container">© 2026 MANAR AFLI · INDUSTRIAL IT & AUTOMATION</footer>
+  <footer class="container">
+    <span>© 2026 MANAR AFLI · INDUSTRIAL IT & AUTOMATION</span>
+    <span>Thank you for visiting my portfolio</span>
+    <a class="back-to-top" href="#home">↑ Back to top</a>
+  </footer>
 
 </body>
 </html>
