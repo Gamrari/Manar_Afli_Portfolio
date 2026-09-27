@@ -666,7 +666,34 @@
     .certificate-image:hover {
       border-color: var(--lavender);
     }
+.internship-certificate {
+  display: inline-block;
+  margin-top: 23px;
+  text-decoration: none;
+}
 
+.internship-certificate img {
+  display: block;
+  width: min(100%, 240px);
+  max-height: 300px;
+  padding: 7px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface-light);
+}
+
+.internship-certificate:hover img {
+  border-color: var(--lavender);
+}
+
+.internship-certificate span {
+  display: block;
+  margin-top: 8px;
+  color: var(--lavender);
+  font-size: 12px;
+  font-weight: 700;
+}
     /* CONTACT */
 
     .contact-panel {
@@ -1138,10 +1165,28 @@
         </article>
 
         <article class="panel experience-card">
-          <span class="flower" aria-hidden="true">✿</span>
-          <span class="card-date">JUL 2025</span>
-          <h3>Industrial Automation Intern</h3>
-          <p class="company">AS2E Automation · Tunisia</p>
+  <span class="flower" aria-hidden="true">✿</span>
+  <span class="card-date">JUL 2025</span>
+  <h3>Industrial Automation Intern</h3>
+  <p class="company">AS2E Automation · Tunisia</p>
+
+  <ul>
+    <li>Programmed industrial control systems in TIA Portal and STEP 7, using ladder logic to develop real-time machinery sequences.</li>
+    <li>Analyzed electrical schematics and circuits to understand and validate control system designs.</li>
+    <li>Researched IEC 62061 functional safety requirements for automated machinery.</li>
+  </ul>
+
+  <a class="internship-certificate"
+     href="Manar-Afli-Internship-certificate.jpg"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="View AS2E Automation internship certificate">
+    <img src="Manar-Afli-Internship-certificate.jpg"
+         alt="Manar Afli's AS2E Automation internship certificate"
+         loading="lazy">
+    <span>View internship certificate ↗</span>
+  </a>
+</article>
 
           <ul>
             <li>Programmed industrial control systems in TIA Portal and STEP 7, using ladder logic to develop real-time machinery sequences.</li>
